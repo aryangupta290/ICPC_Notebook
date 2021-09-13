@@ -7,10 +7,11 @@
  */
 #define until first
 #define opt second
-ll cost(int i, int j){
-  return dp[j] + /*cost to jump from i to j*/;
+ll dp[100000];
+ll cost(int i, int j) {
+  return dp[j] /* + cost to jump from i to j*/;
 }
-void solve() {
+void solve(int n) {
   dp[n] = 0;
   vector<PII> v;
   v.EB(n - 1, n);

@@ -10,7 +10,7 @@ struct HullDynamic {
 #define CLREF const Line&
   struct Line {
     int a; ll b, val=0; dbl xLeft = -INF; bool type=0;
-    Line(ll a = 0, ll b = 0): a(a), b(b) {}
+    Line(int a = 0, ll b = 0): a(a), b(b) {}
     ll eval(int x) const{ return a * 1ll * x + b; }
     bool operator< (CLREF l2) const {
       return l2.type ? (xLeft > l2.val) : (a < l2.a);

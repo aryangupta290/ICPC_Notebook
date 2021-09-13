@@ -17,3 +17,4 @@ void* operator new(size_t s) {
 	return (void*)&buf[i -= s];
 }
 void operator delete(void*) {}
+void operator delete(void*, size_t) {}

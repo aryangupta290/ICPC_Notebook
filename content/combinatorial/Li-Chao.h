@@ -5,6 +5,7 @@
  * Description: FIXME
  * Time: FIXME
  */
+int n, tree[1 << 16]; // set limits correctly
 int eval(int f, int x); // evaluate f(x)
 // Add func f to set which crosses every other func atmost once
 void update(int f, int root = 1, int s = 1, int e = n) {
