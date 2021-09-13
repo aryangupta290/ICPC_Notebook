@@ -13,7 +13,7 @@
 
 const ll inf = 1LL << 62;
 void floydWarshall(vector<vector<ll>>& m) {
-	int n = sz(m);
+	int n = SZ(m);
 	REP(i,0,n) m[i][i] = min(m[i][i], 0LL);
 	REP(k,0,n) REP(i,0,n) REP(j,0,n)
 		if (m[i][k] != inf && m[k][j] != inf) {

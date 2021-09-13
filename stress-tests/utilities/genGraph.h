@@ -1,11 +1,11 @@
 #pragma once
 #include "random.h"
 
-vector<pii> randomSimpleGraphAsEdgeList(int n, int m) {
+vector<PII> randomSimpleGraphAsEdgeList(int n, int m) {
 	assert(m <= (ll)n * (n - 1) / 2);
-	vector<pii> ed;
+	vector<PII> ed;
 	if (m > (ll)n * n / 3) {
-		rep(i,0,n) rep(j,0,i) {
+		REP(i,0,n) REP(j,0,i) {
 			int a = i, b = j;
 			if (randBool()) swap(a, b);
 			ed.push_back({a,b});
@@ -13,8 +13,8 @@ vector<pii> randomSimpleGraphAsEdgeList(int n, int m) {
 		shuffle_vec(ed);
 		ed.erase(ed.begin() + m, ed.end());
 	} else {
-		set<pii> seen;
-		rep(i,0,m) {
+		set<PII> seen;
+		REP(i,0,m) {
 			int a = randRange(n);
 			int b = randRange(n);
 			if (a == b) continue;
@@ -25,8 +25,8 @@ vector<pii> randomSimpleGraphAsEdgeList(int n, int m) {
 	return ed;
 }
 
-vector<vi> randomSimpleGraph(int n, int m) {
-	vector<vi> ed(n);
+vector<VI> randomSimpleGraph(int n, int m) {
+	vector<VI> ed(n);
 	for (auto pa : randomSimpleGraphAsEdgeList(n, m)) {
 		ed[pa.first].push_back(pa.second);
 		ed[pa.second].push_back(pa.first);
@@ -35,19 +35,19 @@ vector<vi> randomSimpleGraph(int n, int m) {
 	return ed;
 }
 
-vector<pii> randomRegularGraphAsEdgeList(int n, int k) {
+vector<PII> randomRegularGraphAsEdgeList(int n, int k) {
 	// TODO: this is slow and requires a lot of retries for large n, change to
 	// something smarter.
 	assert(k < n);
-	vector<pii> ed;
-	vi cands(n), rem(n, k);
-	rep(i,0,n) cands[i] = i;
+	vector<PII> ed;
+	VI cands(n), rem(n, k);
+	REP(i,0,n) cands[i] = i;
 	int failures = 0;
-	set<pii> seen;
+	set<PII> seen;
 	while (!cands.empty()) {
-		if (sz(cands) == 1) goto fail;
-		int ai = randRange(sz(cands));
-		int bi = randRange(sz(cands));
+		if (SZ(cands) == 1) goto fail;
+		int ai = randRange(SZ(cands));
+		int bi = randRange(SZ(cands));
 		int a = cands[ai], b = cands[bi];
 		if (a == b) continue;
 		if (!seen.insert(minmax(a, b)).second) {
@@ -67,7 +67,7 @@ vector<pii> randomRegularGraphAsEdgeList(int n, int k) {
 			cands.pop_back();
 		}
 	}
-	assert(sz(ed) == n * k / 2);
+	assert(SZ(ed) == n * k / 2);
 	return ed;
 fail:
 	cerr << "retry" << endl;
