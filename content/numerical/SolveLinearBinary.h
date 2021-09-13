@@ -15,7 +15,7 @@ typedef bitset<1000> bs;
 int solveLinear(vector<bs>& A, VI& b, bs& x, int m) {
 	int n = SZ(A), rank = 0, br;
 	assert(m <= SZ(x));
-	VI col(m); iota(all(col), 0);
+	VI col(m); iota(ALL(col), 0);
 	REP(i,0,n) {
 		for (br=i; br<n; ++br) if (A[br].any()) break;
 		if (br == n) {

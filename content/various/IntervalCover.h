@@ -12,8 +12,8 @@
 template<class T>
 VI cover(pair<T, T> G, vector<pair<T, T>> I) {
 	VI S(SZ(I)), R;
-	iota(all(S), 0);
-	sort(all(S), [&](int a, int b) { return I[a] < I[b]; });
+	iota(ALL(S), 0);
+	sort(ALL(S), [&](int a, int b) { return I[a] < I[b]; });
 	T cur = G.first;
 	int at = 0;
 	while (cur < G.second) { // (A)

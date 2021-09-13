@@ -35,8 +35,8 @@ struct MCMF {
 	}
 
 	void path(int s) {
-		fill(all(seen), 0);
-		fill(all(dist), INF);
+		fill(ALL(seen), 0);
+		fill(ALL(dist), INF);
 		dist[s] = 0; ll di;
 
 		__gnu_pbds::priority_queue<pair<ll, int>> q;
@@ -81,7 +81,7 @@ struct MCMF {
 
 	// If some costs can be negative, call this before maxflow:
 	void setpi(int s) { // (otherwise, leave this out)
-		fill(all(pi), INF); pi[s] = 0;
+		fill(ALL(pi), INF); pi[s] = 0;
 		int it = N, ch = 1; ll v;
 		while (ch-- && it--)
 			REP(i,0,N) if (pi[i] != INF)

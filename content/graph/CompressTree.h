@@ -19,14 +19,14 @@ vpi compressTree(LCA& lca, const VI& subset) {
 	static VI rev; rev.resize(SZ(lca.time));
 	VI li = subset, &T = lca.time;
 	auto cmp = [&](int a, int b) { return T[a] < T[b]; };
-	sort(all(li), cmp);
+	sort(ALL(li), cmp);
 	int m = SZ(li)-1;
 	REP(i,0,m) {
 		int a = li[i], b = li[i+1];
 		li.push_back(lca.lca(a, b));
 	}
-	sort(all(li), cmp);
-	li.erase(unique(all(li)), li.end());
+	sort(ALL(li), cmp);
+	li.erase(unique(ALL(li)), li.end());
 	REP(i,0,SZ(li)) rev[li[i]] = i;
 	vpi ret = {PII(0, li[0])};
 	REP(i,0,SZ(li)-1) {

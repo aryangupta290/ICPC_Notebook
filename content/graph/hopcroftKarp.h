@@ -29,8 +29,8 @@ int hopcroftKarp(vector<VI>& g, VI& btoa) {
 	int res = 0;
 	VI A(g.size()), B(btoa.size()), cur, next;
 	for (;;) {
-		fill(all(A), 0);
-		fill(all(B), 0);
+		fill(ALL(A), 0);
+		fill(ALL(B), 0);
 		/// Find the starting nodes for BFS (i.e. layer 0).
 		cur.clear();
 		for (int a : btoa) if(a != -1) A[a] = -1;

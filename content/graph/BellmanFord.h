@@ -17,7 +17,7 @@ struct Node { ll dist = inf; int prev = -1; };
 
 void bellmanFord(vector<Node>& nodes, vector<Ed>& eds, int s) {
 	nodes[s].dist = 0;
-	sort(all(eds), [](Ed a, Ed b) { return a.s() < b.s(); });
+	sort(ALL(eds), [](Ed a, Ed b) { return a.s() < b.s(); });
 
 	int lim = SZ(nodes) / 2 + 2; // /3+100 with shuffled vertices
 	REP(i,0,lim) for (Ed ed : eds) {

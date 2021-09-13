@@ -15,7 +15,7 @@ const double eps = 1e-12;
 int solveLinear(vector<vd>& A, vd& b, vd& x) {
 	int n = SZ(A), m = SZ(x), rank = 0, br, bc;
 	if (n) assert(SZ(A[0]) == m);
-	VI col(m); iota(all(col), 0);
+	VI col(m); iota(ALL(col), 0);
 
 	REP(i,0,n) {
 		double v, bv = 0;

@@ -21,12 +21,12 @@ struct SuffixArray {
 	VI sa, lcp;
 	SuffixArray(string& s, int lim=256) { // or basic_string<int>
 		int n = SZ(s) + 1, k = 0, a, b;
-		VI x(all(s)+1), y(n), ws(max(n, lim)), rank(n);
-		sa = lcp = y, iota(all(sa), 0);
+		VI x(ALL(s)+1), y(n), ws(max(n, lim)), rank(n);
+		sa = lcp = y, iota(ALL(sa), 0);
 		for (int j = 0, p = 0; p < n; j = max(1, j * 2), lim = p) {
-			p = j, iota(all(y), n - j);
+			p = j, iota(ALL(y), n - j);
 			REP(i,0,n) if (sa[i] >= j) y[p++] = sa[i] - j;
-			fill(all(ws), 0);
+			fill(ALL(ws), 0);
 			REP(i,0,n) ws[x[i]]++;
 			REP(i,1,lim) ws[i] += ws[i - 1];
 			for (int i = n; i--;) sa[--ws[x[y[i]]]] = y[i];

@@ -19,11 +19,11 @@ pair<int, VI> globalMinCut(vector<VI> mat) {
 		size_t s = 0, t = 0;
 		REP(it,0,n-ph) { // O(V^2) -> O(E log V) with prio. queue
 			w[t] = INT_MIN;
-			s = t, t = max_element(all(w)) - w.begin();
+			s = t, t = max_element(ALL(w)) - w.begin();
 			REP(i,0,n) w[i] += mat[t][i];
 		}
 		best = min(best, {w[t] - mat[t][t], co[t]});
-		co[s].insert(co[s].end(), all(co[t]));
+		co[s].insert(co[s].end(), ALL(co[t]));
 		REP(i,0,n) mat[s][i] += mat[t][i];
 		REP(i,0,n) mat[i][s] = mat[s][i];
 		mat[0][t] = INT_MIN;

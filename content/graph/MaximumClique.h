@@ -22,7 +22,7 @@ struct Maxclique {
 	void init(vv& r) {
 		for (auto& v : r) v.d = 0;
 		for (auto& v : r) for (auto j : r) v.d += e[v.i][j.i];
-		sort(all(r), [](auto a, auto b) { return a.d > b.d; });
+		sort(ALL(r), [](auto a, auto b) { return a.d > b.d; });
 		int mxD = r[0].d;
 		REP(i,0,SZ(r)) r[i].d = min(i, mxD) + 1;
 	}
@@ -41,7 +41,7 @@ struct Maxclique {
 				for (auto v : T) {
 					int k = 1;
 					auto f = [&](int i) { return e[v.i][i]; };
-					while (any_of(all(C[k]), f)) k++;
+					while (any_of(ALL(C[k]), f)) k++;
 					if (k > mxk) mxk = k, C[mxk + 1].clear();
 					if (k < mnk) T[j++].i = v.i;
 					C[k].push_back(v.i);

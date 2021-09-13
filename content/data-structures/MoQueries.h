@@ -19,8 +19,8 @@ VI mo(vector<PII> Q) {
 	int L = 0, R = 0, blk = 350; // ~N/sqrt(Q)
 	VI s(SZ(Q)), res = s;
 #define K(x) PII(x.first/blk, x.second ^ -(x.first/blk & 1))
-	iota(all(s), 0);
-	sort(all(s), [&](int s, int t){ return K(Q[s]) < K(Q[t]); });
+	iota(ALL(s), 0);
+	sort(ALL(s), [&](int s, int t){ return K(Q[s]) < K(Q[t]); });
 	for (int qi : s) {
 		PII q = Q[qi];
 		while (L > q.first) add(--L, 0);
@@ -46,8 +46,8 @@ VI moTree(vector<array<int, 2>> Q, vector<VI>& ed, int root=0){
 	};
 	dfs(root, -1, 0, dfs);
 #define K(x) PII(I[x[0]] / blk, I[x[1]] ^ -(I[x[0]] / blk & 1))
-	iota(all(s), 0);
-	sort(all(s), [&](int s, int t){ return K(Q[s]) < K(Q[t]); });
+	iota(ALL(s), 0);
+	sort(ALL(s), [&](int s, int t){ return K(Q[s]) < K(Q[t]); });
 	for (int qi : s) REP(end,0,2) {
 		int &a = pos[end], b = Q[qi][end], i = 0;
 #define step(c) { if (in[c]) { del(a, end); in[a] = 0; } \

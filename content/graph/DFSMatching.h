@@ -34,5 +34,5 @@ int dfsMatching(vector<VI>& g, VI& btoa) {
 				break;
 			}
 	}
-	return SZ(btoa) - (int)count(all(btoa), -1);
+	return SZ(btoa) - (int)count(ALL(btoa), -1);
 }

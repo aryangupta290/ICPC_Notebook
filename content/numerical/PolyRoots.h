@@ -18,7 +18,7 @@ vector<double> polyRoots(Poly p, double xmin, double xmax) {
 	auto dr = polyRoots(der, xmin, xmax);
 	dr.push_back(xmin-1);
 	dr.push_back(xmax+1);
-	sort(all(dr));
+	sort(ALL(dr));
 	REP(i,0,SZ(dr)-1) {
 		double l = dr[i], h = dr[i+1];
 		bool sign = p(l) > 0;

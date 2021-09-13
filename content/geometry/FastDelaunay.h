@@ -65,8 +65,8 @@ pair<Q,Q> rec(const vector<P>& s) {
 #define valid(e) (e->F().cross(H(base)) > 0)
 	Q A, B, ra, rb;
 	int half = SZ(s) / 2;
-	tie(ra, A) = rec({all(s) - half});
-	tie(B, rb) = rec({SZ(s) - half + all(s)});
+	tie(ra, A) = rec({ALL(s) - half});
+	tie(B, rb) = rec({SZ(s) - half + ALL(s)});
 	while ((B->p.cross(H(A)) < 0 && (A = A->next())) ||
 	       (A->p.cross(H(B)) > 0 && (B = B->r()->o)));
 	Q base = connect(B->r(), A);
@@ -92,7 +92,7 @@ pair<Q,Q> rec(const vector<P>& s) {
 }
 
 vector<P> triangulate(vector<P> pts) {
-	sort(all(pts));  assert(unique(all(pts)) == pts.end());
+	sort(ALL(pts));  assert(unique(ALL(pts)) == pts.end());
 	if (SZ(pts) < 2) return {};
 	Q e = rec(pts).first;
 	vector<Q> q = {e};

@@ -16,7 +16,7 @@
 VI edgeColoring(int N, vector<PII> eds) {
 	VI cc(N + 1), ret(SZ(eds)), fan(N), free(N), loc;
 	for (PII e : eds) ++cc[e.first], ++cc[e.second];
-	int u, v, ncols = *max_element(all(cc)) + 1;
+	int u, v, ncols = *max_element(ALL(cc)) + 1;
 	vector<VI> adj(N, VI(ncols, -1));
 	for (PII e : eds) {
 		tie(u, v) = e;
