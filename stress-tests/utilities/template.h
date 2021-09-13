@@ -7,3 +7,9 @@ using namespace std;
 typedef long long ll;
 typedef pair<int, int> PII;
 typedef vector<int> VI;
+
+#define rep REP
+#define all ALL
+#define sz SZ
+#define pii PII
+#define vi VI
