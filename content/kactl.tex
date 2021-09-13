@@ -1,7 +1,10 @@
 \documentclass[9pt, a4paper, notitlepage]{extreport}
 \usepackage{kactlpkg}
 \usepackage{DejaVuSansMono}
-\lstset{emph={ll, dbl, VI, PII, REP}, emphstyle=\bfseries\color{myblue}}
+
+%%% make keywords bold
+\lstset{keywordstyle=\bfseries} % \color{myblue}
+\lstset{emph={ll, dbl, VI, PII, REP}, emphstyle=\bfseries}
 
 \kactlcontentdir{content}
 
@@ -9,7 +12,7 @@
 \team{tesla\_protocol}{Anurudh Peduri, Arjun P, Devansh Gautam}
 \contest{44th ICPC World Finals 2020}{October 5, 2021}
 % \contest{\ }{\today}
-\enablecolors
+% \enablecolors
 
 \begin{document}
 	\maketeampage
