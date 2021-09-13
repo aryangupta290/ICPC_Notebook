@@ -30,7 +30,7 @@ void ntt(vl &a) {
 		ll z[] = {1, modpow(root, mod >> s)};
 		REP(i,k,2*k) rt[i] = rt[i / 2] * z[i & 1] % mod;
 	}
-	vi rev(n);
+	VI rev(n);
 	REP(i,0,n) rev[i] = (rev[i / 2] | (i & 1) << L) / 2;
 	REP(i,0,n) if (i < rev[i]) swap(a[i], a[rev[i]]);
 	for (int k = 1; k < n; k *= 2)

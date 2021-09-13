@@ -8,9 +8,9 @@
  */
 #pragma once
 
-array<vi, 2> manacher(const string& s) {
+array<VI, 2> manacher(const string& s) {
 	int n = SZ(s);
-	array<vi,2> p = {vi(n+1), vi(n)};
+	array<VI,2> p = {VI(n+1), VI(n)};
 	REP(z,0,2) for (int i=0,l=0,r=0; i < n; i++) {
 		int t = r-i+!z;
 		if (i<r) p[z][i] = min(t, p[z][l+t]);

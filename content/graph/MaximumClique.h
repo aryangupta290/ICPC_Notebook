@@ -17,8 +17,8 @@ struct Maxclique {
 	typedef vector<Vertex> vv;
 	vb e;
 	vv V;
-	vector<vi> C;
-	vi qmax, q, S, old;
+	vector<VI> C;
+	VI qmax, q, S, old;
 	void init(vv& r) {
 		for (auto& v : r) v.d = 0;
 		for (auto& v : r) for (auto j : r) v.d += e[v.i][j.i];
@@ -54,7 +54,7 @@ struct Maxclique {
 			q.pop_back(), R.pop_back();
 		}
 	}
-	vi maxClique() { init(V), expand(V); return qmax; }
+	VI maxClique() { init(V), expand(V); return qmax; }
 	Maxclique(vb conn) : e(conn), C(SZ(e)+1), S(SZ(C)), old(S) {
 		REP(i,0,SZ(e)) V.push_back({i});
 	}

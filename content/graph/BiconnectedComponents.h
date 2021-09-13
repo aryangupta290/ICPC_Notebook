@@ -13,14 +13,14 @@
  *  for each edge (a,b) {
  *    ed[a].emplace_back(b, eid);
  *    ed[b].emplace_back(a, eid++); }
- *  bicomps([\&](const vi\& edgelist) {...});
+ *  bicomps([\&](const VI\& edgelist) {...});
  * Time: O(E + V)
  * Status: tested during MIPT ICPC Workshop 2017
  */
 #pragma once
 
-vi num, st;
-vector<vector<pii>> ed;
+VI num, st;
+vector<vector<PII>> ed;
 int Time;
 template<class F>
 int dfs(int at, int par, F& f) {
@@ -37,7 +37,7 @@ int dfs(int at, int par, F& f) {
 			top = min(top, up);
 			if (up == me) {
 				st.push_back(e);
-				f(vi(st.begin() + si, st.end()));
+				f(VI(st.begin() + si, st.end()));
 				st.resize(si);
 			}
 			else if (up < me) st.push_back(e);

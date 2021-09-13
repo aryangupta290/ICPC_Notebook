@@ -25,7 +25,7 @@ struct AhoCorasick {
 		Node(int v) { memset(next, v, sizeof(next)); }
 	};
 	vector<Node> N;
-	vi backp;
+	VI backp;
 	void insert(string& s, int j) {
 		assert(!s.empty());
 		int n = 0;
@@ -60,9 +60,9 @@ struct AhoCorasick {
 			}
 		}
 	}
-	vi find(string word) {
+	VI find(string word) {
 		int n = 0;
-		vi res; // ll count = 0;
+		VI res; // ll count = 0;
 		for (char c : word) {
 			n = N[n].next[c - first];
 			res.push_back(N[n].end);
@@ -70,9 +70,9 @@ struct AhoCorasick {
 		}
 		return res;
 	}
-	vector<vi> findAll(vector<string>& pat, string word) {
-		vi r = find(word);
-		vector<vi> res(SZ(word));
+	vector<VI> findAll(vector<string>& pat, string word) {
+		VI r = find(word);
+		vector<VI> res(SZ(word));
 		REP(i,0,SZ(word)) {
 			int ind = r[i];
 			while (ind != -1) {

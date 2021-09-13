@@ -14,7 +14,7 @@
 #include "../number-theory/ModPow.h"
 
 int matInv(vector<vector<ll>>& A) {
-	int n = SZ(A); vi col(n);
+	int n = SZ(A); VI col(n);
 	vector<vector<ll>> tmp(n, vector<ll>(n));
 	REP(i,0,n) tmp[i][i] = 1, col[i] = i;
 

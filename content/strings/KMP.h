@@ -9,8 +9,8 @@
  */
 #pragma once
 
-vi pi(const string& s) {
-	vi p(SZ(s));
+VI pi(const string& s) {
+	VI p(SZ(s));
 	REP(i,1,SZ(s)) {
 		int g = p[i-1];
 		while (g && s[i] != s[g]) g = p[g-1];
@@ -19,8 +19,8 @@ vi pi(const string& s) {
 	return p;
 }
 
-vi match(const string& s, const string& pat) {
-	vi p = pi(pat + '\0' + s), res;
+VI match(const string& s, const string& pat) {
+	VI p = pi(pat + '\0' + s), res;
 	REP(i,SZ(p)-SZ(s),SZ(p))
 		if (p[i] == SZ(pat)) res.push_back(i - 2 * SZ(pat));
 	return res;

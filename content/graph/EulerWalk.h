@@ -14,9 +14,9 @@
  */
 #pragma once
 
-vi eulerWalk(vector<vector<pii>>& gr, int nedges, int src=0) {
+VI eulerWalk(vector<vector<PII>>& gr, int nedges, int src=0) {
 	int n = SZ(gr);
-	vi D(n), its(n), eu(nedges), ret, s = {src};
+	VI D(n), its(n), eu(nedges), ret, s = {src};
 	D[src]++; // to allow Euler paths, not just cycles
 	while (!s.empty()) {
 		int x = s.back(), y, e, &it = its[x], end = SZ(gr[x]);

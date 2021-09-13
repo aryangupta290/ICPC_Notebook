@@ -9,13 +9,13 @@
  */
 #pragma once
 
-pair<int, vi> globalMinCut(vector<vi> mat) {
-	pair<int, vi> best = {INT_MAX, {}};
+pair<int, VI> globalMinCut(vector<VI> mat) {
+	pair<int, VI> best = {INT_MAX, {}};
 	int n = SZ(mat);
-	vector<vi> co(n);
+	vector<VI> co(n);
 	REP(i,0,n) co[i] = {i};
 	REP(ph,1,n) {
-		vi w = mat[0];
+		VI w = mat[0];
 		size_t s = 0, t = 0;
 		REP(it,0,n-ph) { // O(V^2) -> O(E log V) with prio. queue
 			w[t] = INT_MIN;

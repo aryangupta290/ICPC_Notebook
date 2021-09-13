@@ -9,12 +9,12 @@
  * the matching. $btoa[i]$ will be the match for vertex $i$ on the right side,
  * or $-1$ if it's not matched.
  * Time: O(VE)
- * Usage: vi btoa(m, -1); dfsMatching(g, btoa);
+ * Usage: VI btoa(m, -1); dfsMatching(g, btoa);
  * Status: works
  */
 #pragma once
 
-bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {
+bool find(int j, vector<VI>& g, VI& btoa, VI& vis) {
 	if (btoa[j] == -1) return 1;
 	vis[j] = 1; int di = btoa[j];
 	for (int e : g[di])
@@ -24,8 +24,8 @@ bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {
 		}
 	return 0;
 }
-int dfsMatching(vector<vi>& g, vi& btoa) {
-	vi vis;
+int dfsMatching(vector<VI>& g, VI& btoa) {
+	VI vis;
 	REP(i,0,SZ(g)) {
 		vis.assign(SZ(btoa), 0);
 		for (int j : g[i])

@@ -19,10 +19,10 @@
 
 template <bool VALS_EDGES> struct HLD {
 	int N, tim = 0;
-	vector<vi> adj;
-	vi par, siz, depth, rt, pos;
+	vector<VI> adj;
+	VI par, siz, depth, rt, pos;
 	Node *tree;
-	HLD(vector<vi> adj_)
+	HLD(vector<VI> adj_)
 		: N(SZ(adj_)), adj(adj_), par(N, -1), siz(N, 1), depth(N),
 		  rt(N),pos(N),tree(new Node(0, N)){ dfsSz(0); dfsHld(0); }
 	void dfsSz(int v) {

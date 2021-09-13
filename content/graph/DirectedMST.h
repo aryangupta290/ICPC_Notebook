@@ -35,12 +35,12 @@ Node *merge(Node *a, Node *b) {
 }
 void pop(Node*& a) { a->prop(); a = merge(a->l, a->r); }
 
-pair<ll, vi> dmst(int n, int r, vector<Edge>& g) {
+pair<ll, VI> dmst(int n, int r, vector<Edge>& g) {
 	RollbackUF uf(n);
 	vector<Node*> heap(n);
 	for (Edge e : g) heap[e.b] = merge(heap[e.b], new Node{e});
 	ll res = 0;
-	vi seen(n, -1), path(n), par(n);
+	VI seen(n, -1), path(n), par(n);
 	seen[r] = r;
 	vector<Edge> Q(n), in(n, {-1,-1}), comp;
 	deque<tuple<int, int, vector<Edge>>> cycs;

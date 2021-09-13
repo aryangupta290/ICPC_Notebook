@@ -7,9 +7,9 @@
  */
 #pragma once
 
-template<class I> vi lis(const vector<I>& S) {
+template<class I> VI lis(const vector<I>& S) {
 	if (S.empty()) return {};
-	vi prev(SZ(S));
+	VI prev(SZ(S));
 	typedef pair<I, int> p;
 	vector<p> res;
 	REP(i,0,SZ(S)) {
@@ -20,7 +20,7 @@ template<class I> vi lis(const vector<I>& S) {
 		prev[i] = it == res.begin() ? 0 : (it-1)->second;
 	}
 	int L = SZ(res), cur = res.back().second;
-	vi ans(L);
+	VI ans(L);
 	while (L--) ans[L] = cur, cur = prev[cur];
 	return ans;
 }

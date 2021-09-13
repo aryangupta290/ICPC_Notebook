@@ -11,8 +11,8 @@
  */
 #pragma once
 
-vi topoSort(const vector<vi>& gr) {
-	vi indeg(SZ(gr)), ret;
+VI topoSort(const vector<VI>& gr) {
+	VI indeg(SZ(gr)), ret;
 	for (auto& li : gr) for (int x : li) indeg[x]++;
 	queue<int> q; // use priority_queue for lexic. largest ans.
 	REP(i,0,SZ(gr)) if (indeg[i] == 0) q.push(i);

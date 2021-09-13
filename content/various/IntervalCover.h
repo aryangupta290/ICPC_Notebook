@@ -10,8 +10,8 @@
 #pragma once
 
 template<class T>
-vi cover(pair<T, T> G, vector<pair<T, T>> I) {
-	vi S(SZ(I)), R;
+VI cover(pair<T, T> G, vector<pair<T, T>> I) {
+	VI S(SZ(I)), R;
 	iota(all(S), 0);
 	sort(all(S), [&](int a, int b) { return I[a] < I[b]; });
 	T cur = G.first;

@@ -19,7 +19,7 @@ struct PushRelabel {
 	vector<vector<Edge>> g;
 	vector<ll> ec;
 	vector<Edge*> cur;
-	vector<vi> hs; vi H;
+	vector<VI> hs; VI H;
 	PushRelabel(int n) : g(n), ec(n), cur(n), hs(2*n), H(n) {}
 
 	void addEdge(int s, int t, ll cap, ll rcap=0) {
@@ -36,7 +36,7 @@ struct PushRelabel {
 	}
 	ll calc(int s, int t) {
 		int v = SZ(g); H[s] = v; ec[t] = 1;
-		vi co(2*v); co[0] = v-1;
+		VI co(2*v); co[0] = v-1;
 		REP(i,0,v) cur[i] = g[i].data();
 		for (Edge& e : g[s]) addFlow(e, e.c);
 

@@ -21,7 +21,7 @@
 typedef array<ll, 3> Edge;
 vector<Edge> gomoryHu(int N, vector<Edge> ed) {
 	vector<Edge> tree;
-	vi par(N);
+	VI par(N);
 	REP(i,1,N) {
 		PushRelabel D(N); // Dinic also works
 		for (Edge t : ed) D.addEdge(t[0], t[1], t[2], t[2]);

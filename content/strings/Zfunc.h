@@ -7,8 +7,8 @@
  */
 #pragma once
 
-vi Z(string S) {
-	vi z(SZ(S));
+VI Z(string S) {
+	VI z(SZ(S));
 	int l = -1, r = -1;
 	REP(i,1,SZ(S)) {
 		z[i] = i >= r ? 0 : min(r - i, z[i - l]);

@@ -8,13 +8,13 @@
  * -1's of the same size as the right partition. Returns the size of
  * the matching. $btoa[i]$ will be the match for vertex $i$ on the right side,
  * or $-1$ if it's not matched.
- * Usage: vi btoa(m, -1); hopcroftKarp(g, btoa);
+ * Usage: VI btoa(m, -1); hopcroftKarp(g, btoa);
  * Time: O(\sqrt{V}E)
  * Status: stress-tested by MinimumVertexCover, and tested on oldkattis.adkbipmatch and SPOJ:MATCHING
  */
 #pragma once
 
-bool dfs(int a, int L, vector<vi>& g, vi& btoa, vi& A, vi& B) {
+bool dfs(int a, int L, vector<VI>& g, VI& btoa, VI& A, VI& B) {
 	if (A[a] != L) return 0;
 	A[a] = -1;
 	for (int b : g[a]) if (B[b] == L + 1) {
@@ -25,9 +25,9 @@ bool dfs(int a, int L, vector<vi>& g, vi& btoa, vi& A, vi& B) {
 	return 0;
 }
 
-int hopcroftKarp(vector<vi>& g, vi& btoa) {
+int hopcroftKarp(vector<VI>& g, VI& btoa) {
 	int res = 0;
-	vi A(g.size()), B(btoa.size()), cur, next;
+	VI A(g.size()), B(btoa.size()), cur, next;
 	for (;;) {
 		fill(all(A), 0);
 		fill(all(B), 0);
