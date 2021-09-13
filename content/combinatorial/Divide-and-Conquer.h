@@ -2,7 +2,8 @@
  * Author: Arjun P
  * Date: 2019-12-19
  * License: CC0
- * Description: Works when $dp_{k,i} = min_{j < i}(dp_{k-1, j} + cost(j, i))$ and $opt_k(i) \le opt_k(i + 1)$. (This holds when quadrangle)\\call $solve(i, 1, n, 1, n)$ for $i = 2$ to $n$ after finding $dp_1$
+ * Description: Works when $dp_{k,i} = min_{j < i}(dp_{k-1, j} + cost(j, i))$ and $opt_k(i) \le opt_k(i + 1)$. (This holds when quadrangle)
+ * Usage: find dp[1], then: for(i = 2 to n) solve(i, 1, n, 1, n)
  * Time: FIXME
  */
 ll dp[100][100]; // set correctly
