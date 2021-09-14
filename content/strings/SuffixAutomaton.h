@@ -1,12 +1,12 @@
 /**
- * Author: Unknown
+ * Author: quasisphere
+ * Source: https://codeforces.com/blog/entry/20861
  * Date: Unknown
  * Description: Each path in the automaton is a substring (if it ends in a terminal node, it is a suffix) And no. of occurences = no. of ways to reach a terminal node. Or keep reverse edges of suffix links(all prefixes for that substring), then no. of ways to reach a root.
- * Time: FIXME
+ * Time: $O(len)$ map accesses, map can be at most of size alphabet, can also use unordered\_map
  * Status: untested
  */
 #pragma once
-
 
 struct SuffixAutomaton {
   vector<map<char, int>> edges;
