@@ -57,13 +57,12 @@ template <typename FLOW, typename COST> struct MCMF {
     return {aug, aug * dis[dest]};
   }
   MCMF(int n, int s, int t)
-    : nodes(n), src(s), dest(t), adj(n), dis(n), inQ(n), par(n) {}
+  : nodes(n), src(s), dest(t), adj(n), dis(n), inQ(n), par(n) {}
   pair<FLOW, COST> mincostmaxflow() {
     pair<FLOW, COST> ans(0, 0);
     while (true) {
       auto cur = SPFA();
-      if (cur.first <= EPSF)
-        break;
+      if (cur.first <= EPSF) break;
       ans.first += cur.first;
       ans.second += cur.second;
     }
