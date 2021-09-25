@@ -3,7 +3,7 @@
  * Date: 2019-12-19
  * License: CC0
  * Description: Applicable if $dp_i = min_{j>i}(dp_j + cost(i,j)$ s.t. $opt_i \le opt_j$ when $i \le j$ (which holds if quadrangle) 
- * Time: FIXME
+ * Time: $O(n \log n)$
  */
 #define until first
 #define opt second

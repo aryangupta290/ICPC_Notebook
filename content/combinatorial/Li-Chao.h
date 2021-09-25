@@ -2,8 +2,8 @@
  * Author: Arjun P
  * Date: 2019-12-19
  * License: CC0
- * Description: FIXME
- * Time: FIXME
+ * Description: Maintain a set of functions (only adding functions) and query minimum at a point.
+ * Time: $O(n \log n)$
  */
 int n, tree[1 << 16]; // set limits correctly
 int eval(int f, int x); // evaluate f(x)
