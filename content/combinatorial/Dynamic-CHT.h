@@ -2,8 +2,8 @@
  * Author: Anurudh Peduri
  * Date: 2020-01-13
  * License: CC0
- * Description: FIXME
- * Time: FIXME
+ * Description: Add lines $y = ax + b$ and query for min at given $x$
+ * Time: $O(log n)$ per update/query.
  */
 const dbl INF = 1e16;
 struct HullDynamic {
