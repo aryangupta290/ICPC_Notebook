@@ -2,8 +2,7 @@
  * Author: chilli
  * License: CC0
  * Source: Own work
- * Description: Read an integer from stdin. Usage requires your program to pipe in
- * input from file.
+ * Description: Usage requires your program to pipe in input from file.
  * Usage: ./a.out < input.txt
  * Time: About 5x as fast as cin/scanf.
  * Status: tested on SPOJ INTEST, unit tested
@@ -19,7 +18,6 @@ inline char gc() { // like getchar()
 	}
 	return buf[bc++]; // returns 0 on EOF
 }
-
 int readInt() {
 	int a, c;
 	while ((a = gc()) < 40);

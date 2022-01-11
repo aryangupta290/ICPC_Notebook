@@ -2,20 +2,11 @@
 
 \section{RNG, Intervals, Ternary Search}
 \kactlimport[-l rawcpp]{RNGs.h}
+\kactlimport{TernarySearch.h}
 \kactlimport{IntervalContainer.h}
 \kactlimport{IntervalCover.h}
 \kactlimport{ConstantIntervals.h}
-\kactlimport{TernarySearch.h}
-	% \kactlimport{LIS.h}
-
-\section{Misc. algorithms}
-%	\kactlimport{TernarySearch.h}
-%	\kactlimport{LIS.h}
-	\kactlimport{FastKnapsack.h}
-
-% \section{Dynamic programming}
-	% \kactlimport{KnuthDP.h}
-	% \kactlimport{DivideAndConquerDP.h}
+\kactlimport{FastKnapsack.h}
 
 \section{Debugging tricks}
 	\begin{itemize}
@@ -39,6 +30,7 @@
 		\end{itemize}
 	\subsection{Pragmas}
 		\begin{itemize}
+			\itemsep-0.5em 
 			\item \lstinline{#pragma GCC optimize ("Ofast")} will make GCC auto-vectorize loops and optimizes floating points better.
 			\item \lstinline{#pragma GCC target ("avx2")} can double performance of vectorized code, but causes crashes on old machines.
 			\item \lstinline{#pragma GCC optimize ("trapv")} kills the program on integer overflows (but is really slow).
