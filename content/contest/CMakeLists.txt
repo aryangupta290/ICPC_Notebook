@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(contest)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS, "-std=c++17 -Wall -pedantic -Wconversion \
+set(CMAKE_CXX_FLAGS "-std=c++17 -Wall -pedantic -Wconversion \
  -Wshadow -Wfloat-equal")
 if (DEBUG_EXEC) # set in 'Debug'
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g -fsanitize=address,undefined")
