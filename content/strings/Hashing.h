@@ -34,21 +34,7 @@ struct HashInterval {
 			ha[i+1] = ha[i] * C + str[i],
 			pw[i+1] = pw[i] * C;
 	}
-	H hashInterval(int a, int b) { // hash [a, b)
+	H hashInterval(int a, int b) { // hash [a, b) and 0 indexed
 		return ha[b] - ha[a] * pw[b - a];
 	}
 };
-
-vector<H> getHashes(string& str, int length) {
-	if (SZ(str) < length) return {};
-	H h = 0, pw = 1;
-	REP(i,0,length)
-		h = h * C + str[i], pw = pw * C;
-	vector<H> ret = {h};
-	REP(i,length,SZ(str)) {
-		ret.push_back(h = h * C + str[i] - pw * str[i-length]);
-	}
-	return ret;
-}
-
-H hashString(string& s){H h{}; for(char c:s) h=h*C+c;return h;}
