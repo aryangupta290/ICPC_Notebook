@@ -23,8 +23,4 @@ pair<P, double> mec(vector<P> ps) {
 			REP(k,0,j) if ((o - ps[k]).dist() > r * EPS) {
 				o = ccCenter(ps[i], ps[j], ps[k]);
 				r = (o - ps[i]).dist();
-			}
-		}
-	}
-	return {o, r};
-}
+}}}return {o, r};}

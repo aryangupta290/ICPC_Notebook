@@ -23,19 +23,14 @@ struct edge_color{
             for(int i=0; i<=n; i++){
                 deg[t][i] = 0;
                 for(int j=0; j<=n; j++){
-                    has[t][i][j] = II(0, 0);
-                }
-            }
-        }
-    }
+                    has[t][i][j] = II(0, 0);}}}}
     void dfs(int x, int p) {
         auto i = has[p][x][c[!p]];
         if (has[!p][i.first][c[p]].second) dfs(i.first,!p);
         else has[!p][i.first][c[!p]] = II(0,0);
         has[p][x][c[p]] = i;
         has[!p][i.first][c[p]] = II(x,i.second);
-        color[i.second] = c[p];
-    }
+        color[i.second] = c[p];   }
     int solve(vector<II> v, vector<int> &cv){
         int m = SZ(v);
         int ans = 0;
@@ -55,8 +50,5 @@ struct edge_color{
         cv.resize(m);
         for(int i=1; i<=m; i++){
             cv[i-1] = color[i];
-            color[i] = 0;
-        }
-        return ans;
-    }
-};
+            color[i] = 0;}
+        return ans;}};
