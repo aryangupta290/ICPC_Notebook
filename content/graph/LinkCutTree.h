@@ -9,6 +9,7 @@
  * Status: Stress-tested a bit for N <= 20
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 struct Node { // Splay tree. Root's pp contains tree's parent.
 	Node *p = 0, *pp = 0, *c[2];

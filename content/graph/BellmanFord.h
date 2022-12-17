@@ -10,6 +10,7 @@
  * Status: Tested on kattis:shortestpath3
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 const ll inf = LLONG_MAX;
 struct Ed { int a, b, w, s() { return a < b ? a : -a; }};

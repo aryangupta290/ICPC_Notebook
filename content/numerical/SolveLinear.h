@@ -8,6 +8,7 @@
  * Status: tested on kattis:equationsolver, and bruteforce-tested mod 3 and 5 for n,m <= 3
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 typedef vector<double> vd;
 const double eps = 1e-12;

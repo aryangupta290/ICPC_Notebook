@@ -10,6 +10,7 @@
  * Status: slightly tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 const ll inf = 1LL << 62;
 void floydWarshALL(vector<vector<ll>>& m) {

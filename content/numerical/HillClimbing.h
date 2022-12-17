@@ -7,6 +7,7 @@
  * Status: used with great success
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 typedef array<double, 2> P;
 

@@ -7,6 +7,7 @@
  * Status: stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 // Arithmetic mod 2^64-1. 2x slower than mod 2^64 and more
 // code, but works on evil test data (e.g. Thue-Morse, where

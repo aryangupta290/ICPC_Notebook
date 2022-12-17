@@ -8,6 +8,7 @@
  * Status: Tested on kattis:stringmatching
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 VI pi(const string& s) {
 	VI p(SZ(s));

@@ -6,6 +6,7 @@
  * Status: stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 VI Z(string S) {
 	VI z(SZ(S));

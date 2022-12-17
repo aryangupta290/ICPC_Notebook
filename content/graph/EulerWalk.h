@@ -13,6 +13,7 @@
  * Status: stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 VI eulerWalk(vector<vector<PII>>& gr, int nedges, int src=0) {
 	int n = SZ(gr);

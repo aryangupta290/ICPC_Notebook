@@ -14,6 +14,7 @@
  * Status: seems to work?
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 typedef double T; // long double, Rational, double + mod<P>...
 typedef vector<T> vd;

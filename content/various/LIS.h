@@ -6,6 +6,7 @@
  * Status: Tested on kattis:longincsubseq, stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 template<class I> VI lis(const vector<I>& S) {
 	if (S.empty()) return {};

@@ -10,6 +10,7 @@
  * Status: tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 template<class F, class G, class T>
 void rec(int from, int to, F& f, G& g, int& i, T& p, T q) {

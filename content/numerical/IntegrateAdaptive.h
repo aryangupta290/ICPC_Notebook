@@ -12,6 +12,7 @@
  * Status: mostly untested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 typedef double d;
 #define S(a,b) (f(a) + 4*f((a+b) / 2) + f(b)) * (b-a) / 6

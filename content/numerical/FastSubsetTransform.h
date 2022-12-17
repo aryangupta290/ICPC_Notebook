@@ -10,6 +10,7 @@
  * Status: stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 void FST(VI& a, bool inv) {
 	for (int n = SZ(a), step = 1; step < n; step *= 2) {

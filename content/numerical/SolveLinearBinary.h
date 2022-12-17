@@ -9,6 +9,7 @@
  * Status: bruteforce-tested for n, m <= 4
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 typedef bitset<1000> bs;
 

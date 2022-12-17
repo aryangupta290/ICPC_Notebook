@@ -7,6 +7,7 @@
  * Status: Tested for all |k|,|c|,to,m <= 50, and on kattis:aladin
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 #define MAX_N_FACT (int)3e5 + 5
 vector<long long> factorial(MAX_N_FACT, 1), inverse_factorial(MAX_N_FACT, 1), inv(MAX_N_FACT, 1);
 void prec_factorials() {

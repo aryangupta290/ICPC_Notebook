@@ -11,6 +11,7 @@
  * Status: stress-tested a bit
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 struct node {
     int sum, width; // width = # of leaves for node
     node operator+(const node &n) {

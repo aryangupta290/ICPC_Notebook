@@ -12,6 +12,7 @@
  * Status: stress-tested, tested on kattis:gamescheduling
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 VI edgeColoring(int N, vector<PII> eds) {
 	VI cc(N + 1), ret(SZ(eds)), fan(N), free(N), loc;

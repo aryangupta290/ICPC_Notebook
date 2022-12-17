@@ -7,6 +7,7 @@
  * Time: O(n)
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 int permToInt(VI& v) {
 	int use = 0, i = 0, r = 0;

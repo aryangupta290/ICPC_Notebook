@@ -7,6 +7,7 @@
  * Status: stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 const int NX = int(1e6) + int(5e5);
 int arr[NX][26];
 int root;

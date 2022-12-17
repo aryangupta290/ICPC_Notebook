@@ -11,6 +11,7 @@
  * Status: Bruteforce-tested for N <= 5
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 VI val, comp, z, cont;
 int Time, ncomps;

@@ -13,6 +13,7 @@
  * Status: Tested on kattis:cordonbleu, stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 pair<int, VI> hungarian(const vector<VI> &a) {
 	if (a.empty()) return {0, {}};

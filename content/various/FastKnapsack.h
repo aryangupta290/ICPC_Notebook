@@ -8,6 +8,7 @@
  * Status: Tested on kattis:eavesdropperevasion, stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 int knapsack(vi w, int t) {
 	int a = 0, b = 0, x;

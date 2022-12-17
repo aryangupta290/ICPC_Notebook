@@ -6,7 +6,8 @@ for fname in glob.glob('content/*/*.h'):
         cont = list(f)
     prline = -1
     for i, line in enumerate(cont):
-        if line.startswith('#pragma once'):
+        if line.startswith('#pragma once
+// 3456789012345678901234567890123456789012345678901234'):
             prline = i
     if prline == -1:
         continue

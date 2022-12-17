@@ -8,6 +8,7 @@
  * Status: Stress-tested together with GomoryHu
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 pair<int, VI> globalMinCut(vector<VI> mat) {
 	pair<int, VI> best = {INT_MAX, {}};

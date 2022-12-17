@@ -12,6 +12,7 @@
  * Status: stress-tested a bit
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 struct SuffixTree {
 	enum { N = 200010, ALPHA = 26 }; // N ~ 2*maxlen+10

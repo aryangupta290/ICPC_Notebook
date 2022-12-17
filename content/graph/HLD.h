@@ -14,6 +14,7 @@
  * Status: stress-tested against old HLD
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 VI sz, sc, hd, en, ex, par, dep;
 seg_tree_lazy<node, update> st(1, {0, 0}, {0, 0}); // for alter accordingly
 int timer = -1;

@@ -8,6 +8,7 @@
  * Status: tested on SPOJ INTEST, unit tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 inline char gc() { // like getchar()
 	static char buf[1 << 16];

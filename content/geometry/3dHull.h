@@ -9,6 +9,7 @@
  * Status: tested on SPOJ CH3D
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 #include "Point3D.h"
 

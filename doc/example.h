@@ -13,6 +13,7 @@
  * Status: Untested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 /// Headers and macros from contest/template.h are automatically included.
 

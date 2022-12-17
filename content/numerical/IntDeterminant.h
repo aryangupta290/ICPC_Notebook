@@ -8,6 +8,7 @@
  * Status: bruteforce-tested for N <= 3, mod <= 7
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 const ll mod = 12345;
 ll det(vector<vector<ll>>& a) {

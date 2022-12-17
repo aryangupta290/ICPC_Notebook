@@ -9,6 +9,7 @@
  * Status: tested, except for phi and theta
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 template<class T> struct Point3D {
 	typedef Point3D P;

@@ -7,6 +7,7 @@
  * Status: tested on http://codeforces.com/contest/321/problem/E
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 struct DP { // Modify at will:
 	int lo(int ind) { return 0; }

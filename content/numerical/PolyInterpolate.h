@@ -9,6 +9,7 @@
  * Time: O(n^2)
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 typedef vector<double> vd;
 vd interpolate(vd x, vd y, int n) {

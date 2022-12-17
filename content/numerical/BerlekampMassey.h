@@ -13,6 +13,7 @@
  * Status: bruteforce-tested mod 5 for n <= 5 and all s
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 #include "../number-theory/ModPow.h"
 

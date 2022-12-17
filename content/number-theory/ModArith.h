@@ -7,6 +7,7 @@
  * some number first and then you can use the structure.
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 #include "euclid.h"
 

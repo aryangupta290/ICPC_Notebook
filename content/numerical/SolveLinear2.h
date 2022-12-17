@@ -7,6 +7,7 @@
  * Status: tested on kattis:equationsolverplus, stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 #include "SolveLinear.h"
 

@@ -8,9 +8,10 @@
  * Status: Tested at Petrozavodsk, also stress-tested via LCA.cpp
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 bool cmp(int u,int v){return arr[u]<arr[v];}
 int create_tree(){//return root of tree
-set<int> S;//get distinct nodes
+set<int> S;//get distinct nodesFord
 REP(i,k)S.insert(Q[i]);k=0;for(auto it : S)Q[k++]=it;
 sort(Q,Q+k,cmp);int kk = k;//distinct initial nodes
 //add lca of adjacent pairs

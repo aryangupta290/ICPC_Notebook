@@ -7,6 +7,7 @@
  * Status: untested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 bool break_condition() // when can we break 
 // eg. (l > rr || r < ll || max_val[node] < x)
 bool tag_condition(); // when can we put tag for lazy update 

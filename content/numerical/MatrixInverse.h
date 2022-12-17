@@ -9,6 +9,7 @@
  * Status: Slightly tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 int matInv(vector<vector<double>>& A) {
 	int n = SZ(A); VI col(n);

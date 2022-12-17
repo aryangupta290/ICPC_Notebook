@@ -7,6 +7,7 @@
  * Status: Stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 array<VI, 2> manacher(const string& s) {
 	int n = SZ(s);

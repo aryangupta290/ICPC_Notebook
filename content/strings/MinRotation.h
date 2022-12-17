@@ -9,6 +9,7 @@
  * Status: Stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 int minRotation(string s) {
 	int a=0, N=SZ(s); s += s;

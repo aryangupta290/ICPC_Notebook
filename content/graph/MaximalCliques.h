@@ -10,6 +10,7 @@
  * Status: stress-tested
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 /// Possible optimization: on the top-most
 /// recursion level, ignore 'cands', and go through nodes in order of increasing
 /// degree, where degrees go down as nodes are removed.

@@ -32,6 +32,7 @@ the algorithm is numerically stable and neither \texttt{tr} nor the check for \t
  * Status: Brute-force tested mod 5 and 7 and stress-tested for real matrices obeying the criteria above.
  */
 #pragma once
+// 3456789012345678901234567890123456789012345678901234
 
 typedef double T;
 vector<T> tridiagonal(vector<T> diag, const vector<T>& super,
