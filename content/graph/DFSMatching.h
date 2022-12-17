@@ -20,10 +20,8 @@ bool find(int j, vector<VI>& g, VI& btoa, VI& vis) {
 	for (int e : g[di])
 		if (!vis[e] && find(e, g, btoa, vis)) {
 			btoa[e] = di;
-			return 1;
-		}
-	return 0;
-}
+			return 1;}
+	return 0;}
 int dfsMatching(vector<VI>& g, VI& btoa) {
 	VI vis;
 	REP(i,0,SZ(g)) {
@@ -31,8 +29,5 @@ int dfsMatching(vector<VI>& g, VI& btoa) {
 		for (int j : g[i])
 			if (find(j, g, btoa, vis)) {
 				btoa[j] = i;
-				break;
-			}
-	}
-	return SZ(btoa) - (int)count(ALL(btoa), -1);
-}
+				break;}}
+	return SZ(btoa) - (int)count(ALL(btoa), -1);}

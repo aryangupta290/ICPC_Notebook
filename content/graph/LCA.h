@@ -12,25 +12,19 @@
 #pragma once
 
 #include "../data-structures/RMQ.h"
-
 struct LCA {
 	int T = 0;
 	VI time, path, ret;
 	RMQ<int> rmq;
-
 	LCA(vector<VI>& C) : time(SZ(C)), rmq((dfs(C,0,-1), ret)) {}
 	void dfs(vector<VI>& C, int v, int par) {
 		time[v] = T++;
 		for (int y : C[v]) if (y != par) {
 			path.push_back(v), ret.push_back(time[v]);
-			dfs(C, y, v);
-		}
-	}
-
+			dfs(C, y, v);}}
 	int lca(int a, int b) {
 		if (a == b) return a;
 		tie(a, b) = minmax(time[a], time[b]);
-		return path[rmq.query(a, b)];
-	}
+		return path[rmq.query(a, b)];}
 	//dist(a,b){return depth[a] + depth[b] - 2*depth[lca(a,b)];}
 };

@@ -14,52 +14,24 @@
  * Status: stress-tested against old HLD
  */
 #pragma once
-
-#include "../data-structures/LazySegmentTree.h"
-
-template <bool VALS_EDGES> struct HLD {
-	int N, tim = 0;
-	vector<VI> adj;
-	VI par, siz, depth, rt, pos;
-	Node *tree;
-	HLD(vector<VI> adj_)
-		: N(SZ(adj_)), adj(adj_), par(N, -1), siz(N, 1), depth(N),
-		  rt(N),pos(N),tree(new Node(0, N)){ dfsSz(0); dfsHld(0); }
-	void dfsSz(int v) {
-		if (par[v] != -1) adj[v].erase(find(ALL(adj[v]), par[v]));
-		for (int& u : adj[v]) {
-			par[u] = v, depth[u] = depth[v] + 1;
-			dfsSz(u);
-			siz[v] += siz[u];
-			if (siz[u] > siz[adj[v][0]]) swap(u, adj[v][0]);
-		}
-	}
-	void dfsHld(int v) {
-		pos[v] = tim++;
-		for (int u : adj[v]) {
-			rt[u] = (u == adj[v][0] ? rt[v] : u);
-			dfsHld(u);
-		}
-	}
-	template <class B> void process(int u, int v, B op) {
-		for (; rt[u] != rt[v]; v = par[rt[v]]) {
-			if (depth[rt[u]] > depth[rt[v]]) swap(u, v);
-			op(pos[rt[v]], pos[v] + 1);
-		}
-		if (depth[u] > depth[v]) swap(u, v);
-		op(pos[u] + VALS_EDGES, pos[v] + 1);
-	}
-	void modifyPath(int u, int v, int val) {
-		process(u, v, [&](int l, int r) { tree->add(l, r, val); });
-	}
-	int queryPath(int u, int v) { // Modify depending on problem
-		int res = -1e9;
-		process(u, v, [&](int l, int r) {
-				res = max(res, tree->query(l, r));
-		});
-		return res;
-	}
-	int querySubtree(int v) { // modifySubtree is similar
-		return tree->query(pos[v] + VALS_EDGES, pos[v] + siz[v]);
-	}
-};
+VI sz, sc, hd, en, ex, par, dep;
+seg_tree_lazy<node, update> st(1, {0, 0}, {0, 0}); // for alter accordingly
+int timer = -1;
+void hld(int u, int p, int ch, int d) {
+    hd[u] = ch; en[u] = ++timer; par[u] = p; dep[u] = d;
+    if (sc[u] != -1) hld(sc[u], u, ch, d + 1);
+    for (auto e : g[u]) {
+        int v = U[e] ^ V[e] ^ u;
+        if (v == p || v == sc[u]) continue;
+        hld(v, u, v, d + 1);}
+    ex[u] = timer;}
+int path(int x, int y) {
+    int ma = (int)-1e9;
+    while (hd[x] != hd[y]) {
+        if (dep[hd[x]] < dep[hd[y]]) swap(x, y);
+        ma = max(st.query(en[hd[x]], en[x]).sum, ma); // for hd[x] -> x
+        x = par[hd[x]];
+    }
+    if (dep[x] < dep[y]) swap(x, y);
+    ma = max(ma, st.query(en[y], en[x]).sum); // for y -> x
+    return ma;}

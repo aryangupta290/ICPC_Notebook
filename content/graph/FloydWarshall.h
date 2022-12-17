@@ -18,8 +18,6 @@ void floydWarshALL(vector<vector<ll>>& m) {
 	REP(k,0,n) REP(i,0,n) REP(j,0,n)
 		if (m[i][k] != inf && m[k][j] != inf) {
 			auto newDist = max(m[i][k] + m[k][j], -inf);
-			m[i][j] = min(m[i][j], newDist);
-		}
+			m[i][j] = min(m[i][j], newDist);}
 	REP(k,0,n) if (m[k][k] < 0) REP(i,0,n) REP(j,0,n)
-		if (m[i][k] != inf && m[k][j] != inf) m[i][j] = -inf;
-}
+		if (m[i][k] != inf && m[k][j] != inf) m[i][j] = -inf;}

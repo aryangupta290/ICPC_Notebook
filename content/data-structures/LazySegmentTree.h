@@ -11,47 +11,61 @@
  * Status: stress-tested a bit
  */
 #pragma once
-#define lc(x) (x << 1) + 1
-#define rc(x) (x << 1) + 2
 struct node {
-	int val, l1 = 0, stat = 0;
-};
-node f(node a, node b) {}
-struct lazySegTree {
-	vector<node> t;
-	node zer;
-	int n;
-	lazySegTree(int n_, node zer_) : n(n_), t(4 * n_, zer_), zer(zer_) {}
-	node query_H(int ind, int lo, int hi, int L, int R) {
-		push(ind, lo, hi);
-		if (R < lo || hi < L) return zer;
-		if (L <= lo && hi <= R) return t[ind];
-		int mid = (lo + hi) / 2;
-		return f(query_H(lc(ind), lo, mid, L, R), query_H(rc(ind), mid + 1, hi, L, R));
-	}
-	void update_H(int ind, int lo, int hi, int L, int R, int stat, int x) {
-		push(ind, lo, hi);
-		if (R < lo || hi < L) return;
-		if (L <= lo && hi <= R) {
-			t[ind].stat = stat;
-			t[ind].l1 = x;
-			push(ind, lo, hi);
-			return;
-		}
-		int mid = (lo + hi) / 2;
-		update_H(lc(ind), lo, mid, L, R, stat, x), update_H(rc(ind), mid + 1, hi, L, R, stat, x);
-		t[ind] = f(t[lc(ind)], t[rc(ind)]);
-	}
-	void push(int ind, int lo, int hi) {
-		if (t[ind].stat == 0) return;
-		t[ind].val += (hi - lo + 1) * t[ind].l1;
-		int mid = (lo + hi) / 2;
-		if (lo != hi) {
-			t[lc(ind)].stat = t[ind].stat, t[lc(ind)].l1 += t[ind].l1;
-			t[rc(ind)].stat = t[ind].stat, t[rc(ind)].l1 += t[ind].l1;
-		}
-		t[ind].stat = t[ind].l1 = 0;
-	}
-	void update(int L, int R, int s, int x) { update_H(0, 0, n - 1, L, R, s, x); }
-	node query(int L, int R) { return query_H(0, 0, n - 1, L, R); }
-};
+    int sum, width; // width = # of leaves for node
+    node operator+(const node &n) {
+        return {max(sum, n.sum), width + n.width};}};
+struct update {
+    int value; bool type;// 0 = add, 1 = reset
+    node operator()(const node &n) {
+        if (type) return {n.width * value, n.width};
+        else return {n.sum + value, n.width};}
+    update operator+(const update &u) {
+        if (u.type) return u;
+        return {type, value + u.value};}};
+template <typename T, typename U>
+struct seg_tree_lazy {
+    int S, H; T zero;
+    vector<T> value; U noop;
+    vector<bool> dirty; vector<U> prop;
+    seg_tree_lazy<T, U>(int _S, T _zero = T(), U _noop = U()) {
+        zero = _zero, noop = _noop;
+        for (S = 1, H = 1; S < _S;) S *= 2, H++;
+        value.resize(2 * S, zero), dirty.resize(2 * S, false);
+        prop.resize(2 * S, noop);}
+    void set_leaves(vector<T> &leaves) {
+        copy(leaves.begin(), leaves.end(), value.begin() + S);
+        for (int i = S - 1; i > 0; i--)
+            value[i] = value[2 * i] + value[2 * i + 1];}
+    void apply(int i, U &update) {
+        value[i] = update(value[i]);
+        if (i < S) {
+            prop[i] = prop[i] + update;
+            dirty[i] = true;}}
+    void rebuild(int i) {
+        for (int l = i / 2; l; l /= 2) {
+            T combined = value[2 * l] + value[2 * l + 1];
+            value[l] = prop[l](combined);}}
+    void propagate(int i) {
+        for (int h = H; h > 0; h--) {
+            int l = i >> h;
+            if (dirty[l]) {
+                apply(2 * l, prop[l]);
+                apply(2 * l + 1, prop[l]);
+                prop[l] = noop;
+                dirty[l] = false;}}}
+    void upd(int i, int j, U update) {
+        i += S, j += S;
+        propagate(i), propagate(j);
+        for (int l = i, r = j; l <= r; l /= 2, r /= 2) {
+            if ((l & 1) == 1) apply(l++, update);
+            if ((r & 1) == 0) apply(r--, update);}
+        rebuild(i), rebuild(j);}
+    T query(int i, int j) {
+        i += S, j += S;
+        propagate(i), propagate(j);
+        T res_left = zero, res_right = zero;
+        for (; i <= j; i /= 2, j /= 2) {
+            if ((i & 1) == 1) res_left = res_left + value[i++];
+            if ((j & 1) == 0) res_right = value[j--] + res_right;}
+        return res_left + res_right;}};

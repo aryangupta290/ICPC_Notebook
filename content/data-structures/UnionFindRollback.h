@@ -20,8 +20,7 @@ struct RollbackUF {
 	void rollback(int t) {
 		for (int i = time(); i --> t;)
 			e[st[i].first] = st[i].second;
-		st.resize(t);
-	}
+		st.resize(t);}
 	bool join(int a, int b) {
 		a = find(a), b = find(b);
 		if (a == b) return false;
@@ -29,6 +28,4 @@ struct RollbackUF {
 		st.push_back({a, e[a]});
 		st.push_back({b, e[b]});
 		e[a] += e[b]; e[b] = a;
-		return true;
-	}
-};
+		return true;}};

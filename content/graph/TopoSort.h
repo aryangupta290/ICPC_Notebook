@@ -21,7 +21,5 @@ VI topoSort(const vector<VI>& gr) {
 		ret.push_back(i);
 		q.pop();
 		for (int x : gr[i])
-			if (--indeg[x] == 0) q.push(x);
-	}
-	return ret;
-}
+			if (--indeg[x] == 0) q.push(x);}
+	return ret;}
