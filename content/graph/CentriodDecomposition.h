@@ -3,6 +3,7 @@
  * Date: 2015-02-06
  * License: CC0
  * Source: Folklore
+ * Description: Assumes the root node points to itself.
  * Time: construction $O(N \log N)$, queries $O(\log N)$
  * Status: Tested at Petrozavodsk, also stress-tested via LCA.cpp
  */

@@ -1,9 +1,11 @@
 /**
- * Author: Simon Lindholm
- * Date: 2016-01-14
+ * Author: Johan Sannemo
+ * Date: 2015-02-06
  * License: CC0
- * Time: $O(|S| \log |S|)$
- * Status: Tested at CodeForces
+ * Source: Folklore
+ * Description: Assumes the root node points to itself.
+ * Time: construction $O(N \log N)$, queries $O(\log N)$
+ * Status: Tested at Petrozavodsk, also stress-tested via LCA.cpp
  */
 #pragma once
 bool cmp(int u,int v){return arr[u]<arr[v];}
