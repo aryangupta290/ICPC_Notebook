@@ -6,7 +6,6 @@
  * Status: somewhat tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 const int MAXN = 100010, LOGN = 18;
 int blk[MAXN], sa[MAXN], cnt[MAXN], b[MAXN], tmp[MAXN], fast[MAXN];

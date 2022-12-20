@@ -3,84 +3,77 @@
  * Date: 2015-02-18
  * License: CC0
  * Source: marian's (TC) code
- * Description: Aho-Corasick automaton, used for multiple pattern matching.
- * Initialize with AhoCorasick ac(patterns); the automaton start node will be at index 0.
- * find(word) returns for each position the index of the longest word that ends there, or -1 if none.
- * findAll($-$, word) finds all words (up to $N \sqrt N$ many if no duplicate patterns)
- * that start at each position (shortest first).
- * Duplicate patterns are allowed; empty patterns are not.
- * To find the longest words that start at each position, reverse all input.
- * For large alphabets, split each symbol into chunks, with sentinel bits for symbol boundaries.
- * Time: construction takes $O(26N)$, where $N =$ sum of length of patterns.
- * find(x) is $O(N)$, where N = length of x. findAll is $O(NM)$.
+ * Description: Aho-Corasick automaton
+ * Time: construction $O(26N)$,where $N =$sum patterns
  * Status: stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
-struct AhoCorasick {
-	enum {alpha = 26, first = 'A'}; // change this!
-	struct Node {
-		// (nmatches is optional)
-		int back, next[alpha], start = -1, end = -1, nmatches = 0;
-		Node(int v) { memset(next, v, sizeof(next)); }
-	};
-	vector<Node> N;
-	VI backp;
-	void insert(string& s, int j) {
-		assert(!s.empty());
-		int n = 0;
-		for (char c : s) {
-			int& m = N[n].next[c - first];
-			if (m == -1) { n = m = SZ(N); N.emplace_back(-1); }
-			else n = m;
-		}
-		if (N[n].end == -1) N[n].start = j;
-		backp.push_back(N[n].end);
-		N[n].end = j;
-		N[n].nmatches++;
-	}
-	AhoCorasick(vector<string>& pat) : N(1, -1) {
-		REP(i,0,SZ(pat)) insert(pat[i], i);
-		N[0].back = SZ(N);
-		N.emplace_back(0);
-
-		queue<int> q;
-		for (q.push(0); !q.empty(); q.pop()) {
-			int n = q.front(), prev = N[n].back;
-			REP(i,0,alpha) {
-				int &ed = N[n].next[i], y = N[prev].next[i];
-				if (ed == -1) ed = y;
-				else {
-					N[ed].back = y;
-					(N[ed].end == -1 ? N[ed].end : backp[N[ed].start])
-						= N[y].end;
-					N[ed].nmatches += N[y].nmatches;
-					q.push(ed);
-				}
-			}
-		}
-	}
-	VI find(string word) {
-		int n = 0;
-		VI res; // ll count = 0;
-		for (char c : word) {
-			n = N[n].next[c - first];
-			res.push_back(N[n].end);
-			// count += N[n].nmatches;
-		}
-		return res;
-	}
-	vector<VI> findAll(vector<string>& pat, string word) {
-		VI r = find(word);
-		vector<VI> res(SZ(word));
-		REP(i,0,SZ(word)) {
-			int ind = r[i];
-			while (ind != -1) {
-				res[i - SZ(pat[ind]) + 1].push_back(ind);
-				ind = backp[ind];
-			}
-		}
-		return res;
-	}
-};
+struct ahocorasick {
+    vector<vector<int>> next;
+    vector<int> fail, out, finish, cnt;
+    vector<string> words;
+    // if there are repeated words and it is necessary to show them
+    // 'finish' has to be vector<vector<int>>
+    // fail stores the suffix links
+    // finish stores index of word which ends at that index(if  any)
+    // cnt stores the number of words ending at i
+    // out stores the index in trie of that suffix link where some word ends
+    ahocorasick() {
+        next.push_back(vector<int>(26));
+        finish.push_back(0);
+        cnt.push_back(0);
+    }
+    void insert(string &s) {
+        int u = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            int c = s[i] - 'a';
+            if (!next[u][c]) {
+                next[u][c] = next.size();
+                next.push_back(vector<int>(26));
+                finish.push_back(-1);
+                cnt.push_back(0);}
+            u = next[u][c];}
+        finish[u] = words.size(); ++cnt[u];
+        words.push_back(s);}
+    int get_fail(int pfail, int c) {
+        while (!next[pfail][c] && pfail != 0)
+            pfail = fail[pfail];
+        return next[pfail][c];}
+    void update_out(int u) {
+        out[u] = fail[u];
+        while (finish[out[u]] == -1)
+            out[u] = fail[out[u]];}
+    void buildf() {
+        queue<int> q;fail.assign(next.size(), 0);
+        out.assign(next.size(), 0);
+        for (int i = 0; i < 26; ++i)
+            if (next[0][i])
+                q.push(next[0][i]);
+        while (q.size()) {
+            int u = q.front(); q.pop();
+            for (int i = 0; i < 26; ++i) {
+                int v = next[u][i];
+                if (v) {
+                    fail[v] = get_fail(fail[u], i);
+                    cnt[v] += cnt[fail[v]];
+                    q.push(v);
+// update_out is similar to while loop in match functions
+// since it goes through all strings while end at that node
+// so comment if unnecessary
+                    update_out(v);}}}}
+    int match(string &s) {
+        int cur = 0, matches = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            int c = s[i] - 'a';
+            if (next[cur][c])
+                cur = next[cur][c];
+            else
+                cur = get_fail(fail[cur], c);
+            matches += cnt[cur];
+            int t = cur;
+            while (t != 0) {
+                if (finish[t] != -1) {
+                    cout << words[finish[t]] << endl;}
+                t = out[t];}}
+        return matches;}};

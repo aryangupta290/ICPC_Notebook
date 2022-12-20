@@ -7,7 +7,6 @@
  * Status: stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 // Arithmetic mod 2^64-1. 2x slower than mod 2^64 and more
 // code, but works on evil test data (e.g. Thue-Morse, where
@@ -26,16 +25,12 @@ struct H {
 	bool operator<(H o) const { return get() < o.get(); }
 };
 static const H C = (ll)1e11+3; // (order ~ 3e9; random also ok)
-
 struct HashInterval {
 	vector<H> ha, pw;
-	HashInterval(string& str) : ha(SZ(str)+1), pw(ha) {
+	HashInterval(string& str) : ha(SZ(str)+1), pw(ha){
 		pw[0] = 1;
 		REP(i,0,SZ(str))
 			ha[i+1] = ha[i] * C + str[i],
-			pw[i+1] = pw[i] * C;
-	}
+			pw[i+1] = pw[i] * C;}
 	H hashInterval(int a, int b) { // hash [a, b) and 0 indexed
-		return ha[b] - ha[a] * pw[b - a];
-	}
-};
+		return ha[b] - ha[a] * pw[b - a];}};

@@ -8,7 +8,6 @@
  * Status: Tested at Petrozavodsk, also stress-tested via LCA.cpp
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 VI U, V, W, isDel;
 int dp[n][log2(n) + 1];

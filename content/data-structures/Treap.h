@@ -9,60 +9,71 @@
  * Status: stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
-
-struct Node {
-	Node *l = 0, *r = 0;
-	int val, y, c = 1;
-	Node(int val) : val(val), y(rand()) {}
-	void recalc();
-};
-
-int cnt(Node* n) { return n ? n->c : 0; }
-void Node::recalc() { c = cnt(l) + cnt(r) + 1; }
-
-template<class F> void each(Node* n, F f) {
-	if (n) { each(n->l, f); f(n->val); each(n->r, f); }
-}
-
-pair<Node*, Node*> split(Node* n, int k) {
-	if (!n) return {};
-	if (cnt(n->l) >= k) { // "n->val >= k" for lower_bound(k)
-		auto pa = split(n->l, k);
-		n->l = pa.second;
-		n->recalc();
-		return {pa.first, n};
-	} else {
-		auto pa = split(n->r, k - cnt(n->l) - 1); // and just "k"
-		n->r = pa.first;
-		n->recalc();
-		return {n, pa.second};
-	}
-}
-
-Node* merge(Node* l, Node* r) {
-	if (!l) return r;
-	if (!r) return l;
-	if (l->y > r->y) {
-		l->r = merge(l->r, r);
-		l->recalc();
-		return l;
-	} else {
-		r->l = merge(l, r->l);
-		r->recalc();
-		return r;
-	}
-}
-
-Node* ins(Node* t, Node* n, int pos) {
-	auto pa = split(t, pos);
-	return merge(merge(pa.first, n), pa.second);
-}
-
-// Example application: move the range [l, r) to index k
-void move(Node*& t, int l, int r, int k) {
-	Node *a, *b, *c;
-	tie(a,b) = split(t, l); tie(b,c) = split(b, r - l);
-	if (k <= l) t = merge(ins(a, b, k), c);
-	else t = merge(a, ins(c, b, k - r));
-}
+mt19937 gen(time(0));
+uniform_int_distribution<int> rng;
+typedef struct node{
+    int prior,size,val,sum,lazy;
+    //value in array,info of segtree,lazy update
+    struct node *l,*r;
+}node;typedef node* pnode;
+int sz(pnode t){
+    return t?t->size:0;}
+void upd_sz(pnode t){
+    if(t)t->size=sz(t->l)+1+sz(t->r);}
+void lazy(pnode t){
+    if(!t || !t->lazy)return;
+    t->val+=t->lazy;//operation of lazy
+    t->sum+=t->lazy*sz(t);
+    if(t->l)t->l->lazy+=t->lazy;//propagate lazy
+    if(t->r)t->r->lazy+=t->lazy;
+    t->lazy=0;}
+void reset(pnode t){
+    if(t)t->sum = t->val;}//lazy already propagated}
+void combine(pnode& t,pnode l,pnode r){//combine segtree ranges
+    if(!l || !r)return void(t = l?l:r);
+    t->sum = l->sum + r->sum;}
+void operation(pnode t){//operation of segtree
+    if(!t)return;
+    reset(t);//node represents single element of array
+    lazy(t->l);lazy(t->r);//imp:propagate lazy before combining l,r
+    combine(t,t->l,t);combine(t,t,t->r);}
+void split(pnode t,pnode &l,pnode &r,int pos,int add=0){
+    if(!t)return void(l=r=NULL);
+    lazy(t);int curr_pos = add + sz(t->l);
+    if(curr_pos<=pos)//element at pos goes to "l"
+        split(t->r,t->r,r,pos,curr_pos+1),l=t;
+    else    split(t->l,l,t->l,pos,add),r=t;
+    upd_sz(t);operation(t);}
+void merge(pnode &t,pnode l,pnode r){//result/left/right array
+    lazy(l);lazy(r);
+    if(!l || !r) t = l?l:r;
+    else if(l->prior>r->prior)merge(l->r,l->r,r),t=l;
+    else    merge(r->l,l,r->l),t=r;
+    upd_sz(t);operation(t);}
+pnode init(int val){
+    pnode ret = (pnode)malloc(sizeof(node));
+    ret->prior=rng(gen);ret->size=1;
+    ret->val=val;ret->sum=val;ret->lazy=0;
+    return ret;}
+int range_query(pnode t,int l,int r){//[l,r]
+    pnode L,mid,R;
+    split(t,L,mid,l-1);split(mid,t,R,r-l);//note: r-l!!
+    int ans = t->sum;
+    merge(mid,L,t);merge(t,mid,R);
+    return ans;}
+void range_update(pnode t,int l,int r,int val){//[l,r]
+    pnode L,mid,R;
+    split(t,L,mid,l-1);split(mid,t,R,r-l);//note: r-l!!
+    t->lazy+=val; //lazy_update
+    merge(mid,L,t);merge(t,mid,R);}
+void reverse(pnode t, int l, int r) {
+    pnode t1 = NULL, t2 = NULL, t3 = NULL;
+    split(t, t1, t2, l - 1);
+    split(t2, t2, t3, r - l);
+    assert(t2); t2->rev ^= true;
+    merge(t, t1, t2);merge(t, t, t3);}
+void output(pnode t) {
+    if (!t) return;
+    output(t->l);cout << t->val << " ";
+    output(t->r);}
+pnode Treap = NULL;

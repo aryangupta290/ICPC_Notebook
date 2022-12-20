@@ -11,7 +11,6 @@
  * Status: tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 template<class T, int N> struct Matrix {
 	typedef Matrix M;
@@ -20,22 +19,15 @@ template<class T, int N> struct Matrix {
 		M a;
 		REP(i,0,N) REP(j,0,N)
 			REP(k,0,N) a.d[i][j] += d[i][k]*m.d[k][j];
-		return a;
-	}
+		return a;}
 	vector<T> operator*(const vector<T>& vec) const {
 		vector<T> ret(N);
 		REP(i,0,N) REP(j,0,N) ret[i] += d[i][j] * vec[j];
-		return ret;
-	}
+		return ret;}
 	M operator^(ll p) const {
 		assert(p >= 0);
 		M a, b(*this);
 		REP(i,0,N) a.d[i][i] = 1;
 		while (p) {
-			if (p&1) a = a*b;
-			b = b*b;
-			p >>= 1;
-		}
-		return a;
-	}
-};
+			if (p&1) a = a*b ; b = b*b ; p >>= 1;}
+		return a;}};

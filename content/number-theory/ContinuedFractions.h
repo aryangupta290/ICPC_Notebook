@@ -26,12 +26,7 @@ pair<ll, ll> approximate(d x, ll N) {
 			// better approximation; if b = a/2, we *may* have one.
 			// Return {P, Q} here for a more canonical approximation.
 			return (abs(x - (d)NP / (d)NQ) < abs(x - (d)P / (d)Q)) ?
-				make_pair(NP, NQ) : make_pair(P, Q);
-		}
+				make_pair(NP, NQ) : make_pair(P, Q);}
 		if (abs(y = 1/(y - (d)a)) > 3*N) {
-			return {NP, NQ};
-		}
-		LP = P; P = NP;
-		LQ = Q; Q = NQ;
-	}
-}
+			return {NP, NQ};}
+		LP = P; P = NP;LQ = Q; Q = NQ;}}

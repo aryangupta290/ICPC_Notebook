@@ -7,7 +7,6 @@
  * Status: tested on kattis:airlinehub
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 double sphericalDistance(double f1, double t1,
 		double f2, double t2, double radius) {

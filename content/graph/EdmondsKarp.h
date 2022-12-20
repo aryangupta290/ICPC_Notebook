@@ -8,7 +8,6 @@
  * Status: stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 template<class T> T edmondsKarp(vector<unordered_map<int, T>>& graph, int source, int sink) {
 	assert(source != sink);

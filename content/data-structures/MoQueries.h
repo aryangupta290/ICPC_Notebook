@@ -10,7 +10,6 @@
  * Status: stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 void add(int ind, int end) { ... } // add a[ind] (end = 0 or 1)
 void del(int ind, int end) { ... } // remove a[ind]

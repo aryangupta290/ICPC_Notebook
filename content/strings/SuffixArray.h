@@ -16,7 +16,6 @@
  * Status: stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 struct SuffixArray {
 	VI sa, lcp;
@@ -38,6 +37,4 @@ struct SuffixArray {
 		REP(i,1,n) rank[sa[i]] = i;
 		for (int i = 0, j; i < n - 1; lcp[rank[i++]] = k)
 			for (k && k--, j = sa[rank[i] - 1];
-					s[i + k] == s[j + k]; k++);
-	}
-};
+					s[i + k] == s[j + k]; k++);}};

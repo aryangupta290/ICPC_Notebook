@@ -7,7 +7,6 @@
  * Status: Works
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 // const ll mod = 1000000007, LIM = 200000; ///include-line
 ll* inv = new ll[LIM] - 1; inv[1] = 1;

@@ -11,7 +11,6 @@
  * Status: Tested for all |k|,|c|,to,m <= 50, and on kattis:aladin
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 typedef unsigned long long ull;
 ull sumsq(ull to) { return to / 2 * ((to-1) | 1); }

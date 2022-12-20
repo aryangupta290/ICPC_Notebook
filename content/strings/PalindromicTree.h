@@ -5,7 +5,6 @@
  * Status: untested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 const int SIGMA = 256;
 struct node{ // use suff_link, smart_link after copying

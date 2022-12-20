@@ -9,13 +9,10 @@
  * Status: Slightly tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
-
 int matInv(vector<vector<double>>& A) {
 	int n = SZ(A); VI col(n);
 	vector<vector<double>> tmp(n, vector<double>(n));
 	REP(i,0,n) tmp[i][i] = 1, col[i] = i;
-
 	REP(i,0,n) {
 		int r = i, c = i;
 		REP(j,i,n) REP(k,i,n)
@@ -24,26 +21,19 @@ int matInv(vector<vector<double>>& A) {
 		if (fabs(A[r][c]) < 1e-12) return i;
 		A[i].swap(A[r]); tmp[i].swap(tmp[r]);
 		REP(j,0,n)
-			swap(A[j][i], A[j][c]), swap(tmp[j][i], tmp[j][c]);
-		swap(col[i], col[c]);
-		double v = A[i][i];
+		{swap(A[j][i], A[j][c]), swap(tmp[j][i], tmp[j][c]);}
+		swap(col[i], col[c]);double v = A[i][i];
 		REP(j,i+1,n) {
-			double f = A[j][i] / v;
-			A[j][i] = 0;
+			double f = A[j][i] / v; A[j][i] = 0;
 			REP(k,i+1,n) A[j][k] -= f*A[i][k];
 			REP(k,0,n) tmp[j][k] -= f*tmp[i][k];
 		}
 		REP(j,i+1,n) A[i][j] /= v;
 		REP(j,0,n) tmp[i][j] /= v;
-		A[i][i] = 1;
-	}
-
+		A[i][i] = 1;}
 	/// forget A at this point, just eliminate tmp backward
 	for (int i = n-1; i > 0; --i) REP(j,0,i) {
 		double v = A[j][i];
-		REP(k,0,n) tmp[j][k] -= v*tmp[i][k];
-	}
-
+		REP(k,0,n) tmp[j][k] -= v*tmp[i][k];}
 	REP(i,0,n) REP(j,0,n) A[col[i]][col[j]] = tmp[i][j];
-	return n;
-}
+	return n;}

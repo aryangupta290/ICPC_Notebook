@@ -8,7 +8,6 @@
  * Status: Works fine, used a lot
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
 template<class T>

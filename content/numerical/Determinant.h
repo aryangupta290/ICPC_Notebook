@@ -8,7 +8,6 @@
  * Status: somewhat tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 double det(vector<vector<double>>& a) {
 	int n = SZ(a); double res = 1;

@@ -8,21 +8,15 @@
  * Status: Tested on kattis:stringmatching
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
-
 VI pi(const string& s) {
 	VI p(SZ(s));
 	REP(i,1,SZ(s)) {
 		int g = p[i-1];
 		while (g && s[i] != s[g]) g = p[g-1];
-		p[i] = g + (s[i] == s[g]);
-	}
-	return p;
-}
-
+		p[i] = g + (s[i] == s[g]);}
+	return p;}
 VI match(const string& s, const string& pat) {
 	VI p = pi(pat + '\0' + s), res;
-	REP(i,SZ(p)-SZ(s),SZ(p))
-		if (p[i] == SZ(pat)) res.push_back(i - 2 * SZ(pat));
-	return res;
-}
+	REP(i,SZ(p)-SZ(s),SZ(p)){
+	if (p[i] == SZ(pat)) res.push_back(i - 2 * SZ(pat));}
+	return res;}

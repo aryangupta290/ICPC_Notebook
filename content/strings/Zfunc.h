@@ -6,7 +6,6 @@
  * Status: stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 VI Z(string S) {
 	VI z(SZ(S));
@@ -16,7 +15,5 @@ VI Z(string S) {
 		while (i + z[i] < SZ(S) && S[i + z[i]] == S[z[i]])
 			z[i]++;
 		if (i + z[i] > r)
-			l = i, r = i + z[i];
-	}
-	return z;
-}
+			l = i, r = i + z[i];}
+	return z;}

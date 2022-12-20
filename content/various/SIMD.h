@@ -11,7 +11,6 @@
  * For aligned memory use \texttt{\_mm\_malloc(size, 32)} or \texttt{int buf[N] alignas(32)}, but prefer loadu/storeu.
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #pragma GCC target ("avx2") // or sse4.1
 #include "immintrin.h" /** keep-include */

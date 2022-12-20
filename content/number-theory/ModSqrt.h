@@ -8,7 +8,6 @@
  * Status: Tested for all a,p <= 10000
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "ModPow.h"
 
@@ -18,8 +17,7 @@ ll sqrt(ll a, ll p) {
 	assert(modpow(a, (p-1)/2, p) == 1); // else no solution
 	if (p % 4 == 3) return modpow(a, (p+1)/4, p);
 	// a^(n+3)/8 or 2^(n+3)/8 * 2^(n-1)/4 works if p % 8 == 5
-	ll s = p - 1, n = 2;
-	int r = 0, m;
+	ll s = p - 1, n = 2;int r = 0, m;
 	while (s % 2 == 0)
 		++r, s /= 2;
 	/// find a non-square mod p
@@ -32,8 +30,5 @@ ll sqrt(ll a, ll p) {
 			t = t * t % p;
 		if (m == 0) return x;
 		ll gs = modpow(g, 1LL << (r - m - 1), p);
-		g = gs * gs % p;
-		x = x * gs % p;
-		b = b * g % p;
-	}
-}
+		g = gs * gs % p;x = x * gs % p;
+		b = b * g % p;}}

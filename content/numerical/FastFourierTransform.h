@@ -18,7 +18,6 @@
  * here (https://github.com/simonlindholm/fft-precision/blob/master/fft-precision.md)
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 typedef complex<double> C;
 typedef vector<double> vd;

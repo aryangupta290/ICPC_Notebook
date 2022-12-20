@@ -6,7 +6,6 @@
  * Status: Tested on kattis:lexicography
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 ll multinomial(VI& v) {
 	ll c = 1, m = v.empty() ? 1 : v[0];

@@ -15,24 +15,19 @@ struct Maxclique {
 	double limit=0.025, pk=0;
 	struct Vertex { int i, d=0; };
 	typedef vector<Vertex> vv;
-	vb e;
-	vv V;
-	vector<VI> C;
-	VI qmax, q, S, old;
+	vb e;vv V;vector<VI> C;VI qmax, q, S, old;
 	void init(vv& r) {
 		for (auto& v : r) v.d = 0;
 		for (auto& v : r) for (auto j : r) v.d += e[v.i][j.i];
 		sort(ALL(r), [](auto a, auto b) { return a.d > b.d; });
 		int mxD = r[0].d;
-		REP(i,0,SZ(r)) r[i].d = min(i, mxD) + 1;
-	}
+		REP(i,0,SZ(r)) r[i].d = min(i, mxD) + 1;}
 	void expand(vv& R, int lev = 1) {
 		S[lev] += S[lev - 1] - old[lev];
 		old[lev] = S[lev - 1];
 		while (SZ(R)) {
 			if (SZ(q) + R.back().d <= SZ(qmax)) return;
-			q.push_back(R.back().i);
-			vv T;
+			q.push_back(R.back().i);vv T;
 			for(auto v:R) if (e[R.back().i][v.i]) T.push_back({v.i});
 			if (SZ(T)) {
 				if (S[lev]++ / ++pk < limit) init(T);
@@ -44,18 +39,13 @@ struct Maxclique {
 					while (any_of(ALL(C[k]), f)) k++;
 					if (k > mxk) mxk = k, C[mxk + 1].clear();
 					if (k < mnk) T[j++].i = v.i;
-					C[k].push_back(v.i);
-				}
+					C[k].push_back(v.i);}
 				if (j > 0) T[j - 1].d = 0;
 				REP(k,mnk,mxk + 1) for (int i : C[k])
 					T[j].i = i, T[j++].d = k;
 				expand(T, lev + 1);
 			} else if (SZ(q) > SZ(qmax)) qmax = q;
-			q.pop_back(), R.pop_back();
-		}
-	}
+			q.pop_back(), R.pop_back();}}
 	VI maxClique() { init(V), expand(V); return qmax; }
 	Maxclique(vb conn) : e(conn), C(SZ(e)+1), S(SZ(C)), old(S) {
-		REP(i,0,SZ(e)) V.push_back({i});
-	}
-};
+		REP(i,0,SZ(e)) V.push_back({i});}};

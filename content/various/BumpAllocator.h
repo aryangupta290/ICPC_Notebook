@@ -8,7 +8,6 @@
  * Status: tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 // Either globally or in a single class:
 static char buf[450 << 20];

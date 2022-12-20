@@ -31,7 +31,6 @@
  * a simple gcd(a^n,m) == gcd(b,m) check.
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 ll modLog(ll a, ll b, ll m) {
 	ll n = (ll) sqrt(m) + 1, e = 1, f = 1, j = 1;
@@ -42,5 +41,4 @@ ll modLog(ll a, ll b, ll m) {
 	if (__gcd(m, e) == __gcd(m, b)) 
 		REP(i,2,n+2) if (A.count(e = e * f % m))
 			return n * i - A[e];
-	return -1;
-}
+	return -1;}

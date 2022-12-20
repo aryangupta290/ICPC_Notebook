@@ -9,7 +9,6 @@
  * Status: Tested on GNYR 2019 Gerrymandering, stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "../../content/geometry/Point.h"
 

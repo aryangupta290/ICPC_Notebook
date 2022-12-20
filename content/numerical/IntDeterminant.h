@@ -8,7 +8,6 @@
  * Status: bruteforce-tested for N <= 3, mod <= 7
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 const ll mod = 12345;
 ll det(vector<vector<ll>>& a) {
@@ -20,11 +19,7 @@ ll det(vector<vector<ll>>& a) {
 				if (t) REP(k,i,n)
 					a[i][k] = (a[i][k] - a[j][k] * t) % mod;
 				swap(a[i], a[j]);
-				ans *= -1;
-			}
-		}
+				ans *= -1;}}
 		ans = ans * a[i][i] % mod;
-		if (!ans) return 0;
-	}
-	return (ans + mod) % mod;
-}
+		if (!ans) return 0;}
+	return (ans + mod) % mod;}

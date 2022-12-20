@@ -11,7 +11,6 @@
  * Status: Works
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "euclid.h"
 
@@ -20,5 +19,4 @@ ll crt(ll a, ll m, ll b, ll n) {
 	ll x, y, g = euclid(m, n, x, y);
 	assert((a - b) % g == 0); // else no solution
 	x = (b - a) % n * x % n / g * m + a;
-	return x < 0 ? x + m*n/g : x;
-}
+	return x < 0 ? x + m*n/g : x;}

@@ -20,7 +20,6 @@ Products of three coordinates are used in intermediate steps so watch out for ov
  * Status: stress-tested, tested on kattis:intersection
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "Point.h"
 #include "OnSegment.h"

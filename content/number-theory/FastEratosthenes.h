@@ -16,7 +16,6 @@
  * Se https://github.com/kth-competitive-programming/kactl/pull/166#discussion_r408354338
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 const int LIM = 1e6;
 bitset<LIM> isPrime;

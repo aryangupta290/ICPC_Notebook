@@ -32,7 +32,6 @@ the algorithm is numerically stable and neither \texttt{tr} nor the check for \t
  * Status: Brute-force tested mod 5 and 7 and stress-tested for real matrices obeying the criteria above.
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 typedef double T;
 vector<T> tridiagonal(vector<T> diag, const vector<T>& super,
@@ -45,9 +44,7 @@ vector<T> tridiagonal(vector<T> diag, const vector<T>& super,
 			diag[i+1] = sub[i]; tr[++i] = 1;
 		} else {
 			diag[i+1] -= super[i]*sub[i]/diag[i];
-			b[i+1] -= b[i]*sub[i]/diag[i];
-		}
-	}
+			b[i+1] -= b[i]*sub[i]/diag[i];}}
 	for (int i = n; i--;) {
 		if (tr[i]) {
 			swap(b[i], b[i-1]);
@@ -55,8 +52,6 @@ vector<T> tridiagonal(vector<T> diag, const vector<T>& super,
 			b[i] /= super[i-1];
 		} else {
 			b[i] /= diag[i];
-			if (i) b[i-1] -= b[i]*super[i-1];
-		}
-	}
+			if (i) b[i-1] -= b[i]*super[i-1];}}
 	return b;
 }

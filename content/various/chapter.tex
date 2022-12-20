@@ -2,10 +2,10 @@
 
 \section{RNG, Intervals, T.S}
 \kactlimport{TernarySearch.h}
-\kactlimport{IntervalCover.h}
-\kactlimport{ConstantIntervals.h}
-\kactlimport{FastKnapsack.h}
-\kactlimport{IntervalContainer.h}
+% \kactlimport{IntervalCover.h}
+% \kactlimport{ConstantIntervals.h}
+% \kactlimport{FastKnapsack.h}
+% \kactlimport{IntervalContainer.h}
 \kactlimport[-l rawcpp]{RNGs.h}
 \kactlimport{DebuggingTricks.cpp}
 
@@ -19,27 +19,27 @@
 % 	\end{itemize}
 % 	% \kactlimport[-l rawcpp]{trace.h}
 
-\section{Optimization tricks}
-	\verb@__builtin_ia32_ldmxcsr(40896);@ disables denormals (which make floats 20x slower near their minimum value).
-	\subsection{Bit hacks}
-		\begin{itemize}
-			\itemsep0em 
-			\item \verb@x & -x@ is the least bit in \texttt{x}.
-			\item \verb@for (int x = m; x; ) { --x &= m; ... }@ loops over all subset masks of \texttt{m} (except \texttt{m} itself).
-			\item \verb@c = x&-x, r = x+c; (((r^x) >> 2)/c) | r@ is the next number after \texttt{x} with the same number of bits set.
-			\item \verb@REP(b,0,K) REP(i,0,(1 << K))@ \\ \verb@  if (i & 1 << b) D[i] += D[i^(1 << b)];@ computes all sums of subsets.
-		\end{itemize}
-	\subsection{Pragmas}
-		\begin{itemize}
-			\itemsep-0.5em 
-			\item \lstinline{#pragma GCC optimize ("Ofast")} will make GCC auto-vectorize loops and optimizes floating points better.
-			\item \lstinline{#pragma GCC target ("avx2")} can double performance of vectorized code, but causes crashes on old machines.
-			\item \lstinline{#pragma GCC optimize ("trapv")} kills the program on integer overflows (but is really slow).
-			\item \lstinline{#pragma GCC optimize("unroll-loops")}
-			\item \lstinline{target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx")}
-		\end{itemize}
-	\kactlimport{FastMod.h}
-	\kactlimport{FastInput.h}
+% \section{Optimization tricks}
+% 	\verb@__builtin_ia32_ldmxcsr(40896);@ disables denormals (which make floats 20x slower near their minimum value).
+% 	\subsection{Bit hacks}
+% 		\begin{itemize}
+% 			\itemsep0em 
+% 			\item \verb@x & -x@ is the least bit in \texttt{x}.
+% 			\item \verb@for (int x = m; x; ) { --x &= m; ... }@ loops over all subset masks of \texttt{m} (except \texttt{m} itself).
+% 			\item \verb@c = x&-x, r = x+c; (((r^x) >> 2)/c) | r@ is the next number after \texttt{x} with the same number of bits set.
+% 			\item \verb@REP(b,0,K) REP(i,0,(1 << K))@ \\ \verb@  if (i & 1 << b) D[i] += D[i^(1 << b)];@ computes all sums of subsets.
+% 		\end{itemize}
+% 	\subsection{Pragmas}
+% 		\begin{itemize}
+% 			\itemsep-0.5em 
+% 			\item \lstinline{#pragma GCC optimize ("Ofast")} will make GCC auto-vectorize loops and optimizes floating points better.
+% 			\item \lstinline{#pragma GCC target ("avx2")} can double performance of vectorized code, but causes crashes on old machines.
+% 			\item \lstinline{#pragma GCC optimize ("trapv")} kills the program on integer overflows (but is really slow).
+% 			\item \lstinline{#pragma GCC optimize("unroll-loops")}
+% 			\item \lstinline{target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx")}
+% 		\end{itemize}
+% 	\kactlimport{FastMod.h}
+% 	\kactlimport{FastInput.h}
 	% \kactlimport{BumpAllocator.h}
 	% \kactlimport{SmallPtr.h}
 	% \kactlimport{BumpAllocatorSTL.h}

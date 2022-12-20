@@ -1,5 +1,4 @@
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 #include "random.h"
 
 vector<PII> randomSimpleGraphAsEdgeList(int n, int m) {

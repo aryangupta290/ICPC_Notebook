@@ -11,7 +11,6 @@
  * Status: tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 /// It is important for r to be precise, otherwise we don't necessarily maintain the inequality a < x1 < x2 < b.
 double gss(double a, double b, double (*f)(double)) {

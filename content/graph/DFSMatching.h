@@ -13,7 +13,6 @@
  * Status: works
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 bool find(int j, vector<VI>& g, VI& btoa, VI& vis) {
 	if (btoa[j] == -1) return 1;

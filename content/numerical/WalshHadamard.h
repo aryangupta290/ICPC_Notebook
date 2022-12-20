@@ -12,9 +12,5 @@ void WalshHadamard(poly &P, bool invert) {
     for (int i = 0; i < SZ(P); i += 2 * len) {
       REP(j, 0, len) {
         auto u = P[i + j], v = P[i + len + j];
-        P[i + j] = u + v, P[i + len + j] = u - v; // XOR
-      }
-    }
-  }
-  if (invert) for (auto &x : P) x /= SZ(P);
-}
+        P[i + j] = u + v, P[i + len + j] = u - v;}}} // XOR
+  if (invert) for (auto &x : P) x /= SZ(P);}

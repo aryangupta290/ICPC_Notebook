@@ -15,7 +15,6 @@
  * Status: stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "../number-theory/ModPow.h"
 
@@ -38,9 +37,7 @@ void ntt(vl &a) {
 		for (int i = 0; i < n; i += 2 * k) REP(j,0,k) {
 			ll z = rt[j + k] * a[i + j + k] % mod, &ai = a[i + j];
 			a[i + j + k] = ai - z + (z > ai ? mod : 0);
-			ai += (ai + z >= mod ? z - mod : z);
-		}
-}
+			ai += (ai + z >= mod ? z - mod : z);}}
 vl conv(const vl &a, const vl &b) {
 	if (a.empty() || b.empty()) return {};
 	int s = SZ(a) + SZ(b) - 1, B = 32 - __builtin_clz(s), n = 1 << B;
@@ -50,5 +47,4 @@ vl conv(const vl &a, const vl &b) {
 	ntt(L), ntt(R);
 	REP(i,0,n) out[-i & (n - 1)] = (ll)L[i] * R[i] % mod * inv % mod;
 	ntt(out);
-	return {out.begin(), out.begin() + s};
-}
+	return {out.begin(), out.begin() + s};}

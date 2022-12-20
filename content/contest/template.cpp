@@ -9,6 +9,7 @@ template <class T>
 using o_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 // order_of_key (val): no. of values less than val
 // find_by_order (k): kth largest element.(0-based)
+// t.join(t1) -> merges t1 with t in linear time
 #define int long long
 #define FOR(i, a, b) for (int i = (a); i < (b); ++i)
 #define REP(i, a, b) for (int i = (a); i < (b); ++i)

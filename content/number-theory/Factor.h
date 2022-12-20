@@ -38,26 +38,21 @@
  *   optimization for small numbers.
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "ModMulLL.h"
 #include "MillerRabin.h"
-
 ull pollard(ull n) {
 	auto f = [n](ull x) { return modmul(x, x, n) + 1; };
 	ull x = 0, y = 0, t = 30, prd = 2, i = 1, q;
 	while (t++ % 40 || __gcd(prd, n) == 1) {
 		if (x == y) x = ++i, y = f(x);
 		if ((q = modmul(prd, max(x,y) - min(x,y), n))) prd = q;
-		x = f(x), y = f(f(y));
-	}
-	return __gcd(prd, n);
-}
+		x = f(x), y = f(f(y));}
+	return __gcd(prd, n);}
 vector<ull> factor(ull n) {
 	if (n == 1) return {};
 	if (isPrime(n)) return {n};
 	ull x = pollard(n);
 	auto l = factor(x), r = factor(n / x);
 	l.insert(l.end(), ALL(r));
-	return l;
-}
+	return l;}

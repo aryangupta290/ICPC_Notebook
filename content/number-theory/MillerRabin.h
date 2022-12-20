@@ -9,7 +9,6 @@
  * Status: Stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "ModMulLL.h"
 
@@ -21,7 +20,5 @@ bool isPrime(ull n) {
 		ull p = modpow(a%n, d, n), i = s;
 		while (p != 1 && p != n - 1 && a % n && i--)
 			p = modmul(p, p, n);
-		if (p != n-1 && i != s) return 0;
-	}
-	return 1;
-}
+		if (p != n-1 && i != s) return 0;}
+	return 1;}

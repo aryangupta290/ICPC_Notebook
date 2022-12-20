@@ -7,18 +7,15 @@
  * Time: O(n^2 \log(1/\epsilon))
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "Polynomial.h"
 
 vector<double> polyRoots(Poly p, double xmin, double xmax) {
 	if (SZ(p.a) == 2) { return {-p.a[0]/p.a[1]}; }
 	vector<double> ret;
-	Poly der = p;
-	der.diff();
+	Poly der = p;der.diff();
 	auto dr = polyRoots(der, xmin, xmax);
-	dr.push_back(xmin-1);
-	dr.push_back(xmax+1);
+	dr.push_back(xmin-1); dr.push_back(xmax+1);
 	sort(ALL(dr));
 	REP(i,0,SZ(dr)-1) {
 		double l = dr[i], h = dr[i+1];
@@ -27,10 +24,6 @@ vector<double> polyRoots(Poly p, double xmin, double xmax) {
 			REP(it,0,60) { // while (h - l > 1e-8)
 				double m = (l + h) / 2, f = p(m);
 				if ((f <= 0) ^ sign) l = m;
-				else h = m;
-			}
-			ret.push_back((l + h) / 2);
-		}
-	}
-	return ret;
-}
+				else h = m;}
+			ret.push_back((l + h) / 2);}}
+	return ret;}

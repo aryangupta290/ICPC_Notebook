@@ -2,7 +2,6 @@
 // as it contains the same inclusions and definitions
 // as the contest template file.
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include <bits/stdc++.h>
 using namespace std;

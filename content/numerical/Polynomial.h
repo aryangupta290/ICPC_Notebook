@@ -4,22 +4,17 @@
  * Description:
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 struct Poly {
 	vector<double> a;
 	double operator()(double x) const {
 		double val = 0;
 		for (int i = SZ(a); i--;) (val *= x) += a[i];
-		return val;
-	}
+		return val;}
 	void diff() {
 		REP(i,1,SZ(a)) a[i-1] = i*a[i];
-		a.pop_back();
-	}
+		a.pop_back();}
 	void divroot(double x0) {
 		double b = a.back(), c; a.back() = 0;
 		for(int i=SZ(a)-1; i--;) c = a[i], a[i] = a[i+1]*x0+b, b=c;
-		a.pop_back();
-	}
-};
+		a.pop_back();}};

@@ -9,31 +9,23 @@
  * Status: not very well tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "../numerical/MatrixInverse-mod.h"
 
 vector<PII> generalMatching(int N, vector<PII>& ed) {
 	vector<vector<ll>> mat(N, vector<ll>(N)), A;
 	for (PII pa : ed) {
-		int a = pa.first, b = pa.second, r = rand() % mod;
-		mat[a][b] = r, mat[b][a] = (mod - r) % mod;
-	}
-
-	int r = matInv(A = mat), M = 2*N - r, fi, fj;
-	assert(r % 2 == 0);
-
+		int a=pa.first,b=pa.second, r = rand() % mod;
+		mat[a][b] = r, mat[b][a] = (mod - r) % mod;	}
+	int r=matInv(A=mat),M=2*N-r,fi,fj; assert(r%2==0);
 	if (M != N) do {
 		mat.resize(M, vector<ll>(M));
 		REP(i,0,N) {
 			mat[i].resize(M);
 			REP(j,N,M) {
 				int r = rand() % mod;
-				mat[i][j] = r, mat[j][i] = (mod - r) % mod;
-			}
-		}
+				mat[i][j]=r,mat[j][i]=(mod-r) % mod;}}
 	} while (matInv(A = mat) != M);
-
 	VI has(M, 1); vector<PII> ret;
 	REP(it,0,M/2) {
 		REP(i,0,M) if (has[i])
@@ -46,10 +38,6 @@ vector<PII> generalMatching(int N, vector<PII>& ed) {
 			ll a = modpow(A[fi][fj], mod-2);
 			REP(i,0,M) if (has[i] && A[i][fj]) {
 				ll b = A[i][fj] * a % mod;
-				REP(j,0,M) A[i][j] = (A[i][j] - A[fi][j] * b) % mod;
-			}
-			swap(fi,fj);
-		}
-	}
-	return ret;
-}
+				REP(j,0,M) A[i][j] = (A[i][j] - A[fi][j] * b) % mod;}
+			swap(fi,fj);}}
+	return ret;}

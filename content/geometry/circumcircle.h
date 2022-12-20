@@ -14,7 +14,6 @@ The circumcirle of a triangle is the circle intersecting all three vertices. ccR
  * Status: tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "Point.h"
 

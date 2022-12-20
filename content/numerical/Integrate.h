@@ -10,7 +10,6 @@
  * Status: mostly untested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 template<class F>
 double quad(double a, double b, F f, const int n = 1000) {

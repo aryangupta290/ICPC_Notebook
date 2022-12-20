@@ -8,7 +8,6 @@
  * Status: untested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 void online(const Poly &B, CD a1, int n, Poly &A) {
   const int m = SZ(B) - 1;
   A.assign(n + 1, 0); A[1] = a1;
@@ -22,8 +21,4 @@ void online(const Poly &B, CD a1, int n, Poly &A) {
       Poly prod = conv(blockA, blockB);
       REP(j, 0, SZ(prod)) {
         if (i + 1 + j <= n)
-          A[i + 1 + j] += prod[j];
-      }
-    }
-  }
-}
+          A[i + 1 + j] += prod[j];}}}}

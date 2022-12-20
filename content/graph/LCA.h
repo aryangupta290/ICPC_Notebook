@@ -10,7 +10,6 @@
  * Status: stress-tested
  */
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 #include "../data-structures/RMQ.h"
 struct LCA {
@@ -26,6 +25,5 @@ struct LCA {
 	int lca(int a, int b) {
 		if (a == b) return a;
 		tie(a, b) = minmax(time[a], time[b]);
-		return path[rmq.query(a, b)];}
-	//dist(a,b){return depth[a] + depth[b] - 2*depth[lca(a,b)];}
-};
+		return path[rmq.query(a, b)];}};
+//dist(a,b){ret depth[a]+depth[b]-2*depth[lca(a,b)];}

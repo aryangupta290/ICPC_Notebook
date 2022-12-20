@@ -1,5 +1,4 @@
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 // Taken from https://stackoverflow.com/a/40873657/2014771
 template <class F> struct y_combinator {

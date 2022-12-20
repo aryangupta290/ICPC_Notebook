@@ -1,5 +1,4 @@
 #pragma once
-// 3456789012345678901234567890123456789012345678901234
 
 // Translated from Python code posted here: https://codeforces.com/blog/entry/63058?#comment-472788
 // May generate polygons with colinear points. Won't generate polygons with duplicate points. No guarantee of the direction of the polygon.
