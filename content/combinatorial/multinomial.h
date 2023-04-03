@@ -5,11 +5,9 @@
  * Description: Computes $\displaystyle \binom{k_1 + \dots + k_n}{k_1, k_2, \dots, k_n} = \frac{(\sum k_i)!}{k_1!k_2!...k_n!}$.
  * Status: Tested on kattis:lexicography
  */
-#pragma once
 
-ll multinomial(VI& v) {
-	ll c = 1, m = v.empty() ? 1 : v[0];
-	REP(i,1,SZ(v)) REP(j,0,v[i])
-		c = c * ++m / (j+1);
-	return c;
-}
+#pragma once
+ll multinomial(VI&v){
+ll c=1,m=v.empty()?1:v[0];
+REP(i,1,SZ(v))REP(j,0,v[i])c=c*++m/(j+1);
+return c;}

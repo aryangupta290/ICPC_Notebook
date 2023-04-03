@@ -6,7 +6,7 @@
  * Description: Calculates the area of the intersection of 2 circles
  * Status:
  */
-
+#pragma once
 template<class P>
 double circleCircleArea(P c, double cr, P d, double dr) {
 	if (cr < dr) swap(c, d), swap(cr, dr);
@@ -19,3 +19,4 @@ double circleCircleArea(P c, double cr, P d, double dr) {
 	if (l - cr >= 0) return A(cr, a) + A(dr, l-a);
 	else return A(cr, a) + M_PI*dr*dr - A(dr, a-l);
 }
+

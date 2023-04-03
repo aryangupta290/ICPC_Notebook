@@ -9,14 +9,14 @@
  * Time: $O(|V|+|E|)$
  * Status: stress-tested
  */
-#pragma once
 
-VI topoSort(const vector<VI>& gr) {
-	VI indeg(SZ(gr)), ret;
-	for (auto& li : gr) for (int x : li) indeg[x]++;
-	queue<int> q;//priority_q for lexic. largest ans
-	REP(i,0,SZ(gr)) if (indeg[i] == 0) q.push(i);
-	while (!q.empty()) {
-		int i = q.front();  ret.push_back(i); q.pop();
-		for(int x:gr[i]) if(--indeg[x]==0) q.push(x);}
-	return ret;}
+#pragma once
+VI topoSort(const vector<VI>&gr){
+VI indeg(SZ(gr)),ret;
+for(auto&li:gr)for(int x:li)indeg[x]++;
+queue<int>q;//priority_q for lexic.largest ans
+REP(i,0,SZ(gr))if(indeg[i]==0)q.push(i);
+while(!q.empty()){
+int i=q.front();ret.push_back(i);q.pop();
+for(int x:gr[i])if(--indeg[x]==0)q.push(x);}
+return ret;}

@@ -17,26 +17,20 @@
  * 	p = polygonCut(p, P(0,0), P(1,0));
  * Status: tested but not extensively
  */
+
 #pragma once
 
-#include "Point.h"
-#include "lineIntersection.h"
+#include"Point.h"
 
-typedef Point<double> P;
-vector<P> polygonCut(const vector<P>& poly, P s, P e) {
-	if (SZ(poly) <= 2) return {};
-	vector<P> res;
-	REP(i,0,SZ(poly)) {
-		P cur = poly[i], prev = i ? poly[i-1] : poly.back();
-		if (zero(s.cross(e, cur))) {
-			res.push_back(cur);
-			continue;
-		}
-		bool side = s.cross(e, cur) < 0;
-		if (side != (s.cross(e, prev) < 0))
-			res.push_back(lineInter(s, e, cur, prev).second);
-		if (side)
-			res.push_back(cur);
-	}
-	return res;
-}
+#include"lineIntersection.h"
+typedef Point<double>P;
+vector<P>polygonCut(const vector<P>&poly,P s,P e){
+if(SZ(poly)<=2)return{};vector<P>res;
+REP(i,0,SZ(poly)){
+P cur=poly[i],prev=i?poly[i-1]:poly.back();
+if(zero(s.cross(e,cur))){
+res.push_back(cur);continue;}
+bool side=s.cross(e,cur)<0;
+if(side!=(s.cross(e,prev)<0))
+res.push_back(lineInter(s,e,cur,prev).second);
+if(side)res.push_back(cur);}return res;}

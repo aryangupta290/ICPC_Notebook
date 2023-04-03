@@ -6,13 +6,11 @@
  * Integer -> permutation can use a lookup table.
  * Time: O(n)
  */
+
 #pragma once
-int boundary(vector<pair<int, int>>& A) {
-    int ats = A.size();
-    for (int i = 0; i < A.size(); i++) {
-        int dx = (A[i].first - A[(i + 1) % A.size()].first);
-        int dy = (A[i].second - A[(i + 1) % A.size()].second);
-        ats += abs(__gcd(dx, dy)) - 1;
-    }
-    return ats;
-}
+int boundary(vector<pair<int,int>>&A){
+int ats=A.size();
+for(int i=0;i<A.size();i++){
+int dx=(A[i].first-A[(i+1)%A.size()].first);
+int dy=(A[i].second-A[(i+1)%A.size()].second);
+ats+=abs(__gcd(dx,dy))-1;}return ats;}

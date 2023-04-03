@@ -8,29 +8,22 @@
  * Time: $O(\log^2 N)$. (Use persistent segment trees for $O(\log N)$.)
  * Status: stress-tested
  */
+
 #pragma once
 
-#include "FenwickTree.h"
-
-struct FT2 {
-	vector<VI> ys; vector<FT> ft;
-	FT2(int limx) : ys(limx) {}
-	void fakeUpdate(int x, int y) {
-		for (; x < SZ(ys); x |= x + 1) ys[x].push_back(y);
-	}
-	void init() {
-		for (VI& v : ys) sort(ALL(v)), ft.emplace_back(SZ(v));
-	}
-	int ind(int x, int y) {
-		return (int)(lower_bound(ALL(ys[x]), y) - ys[x].begin()); }
-	void update(int x, int y, ll dif) {
-		for (; x < SZ(ys); x |= x + 1)
-			ft[x].update(ind(x, y), dif);
-	}
-	ll query(int x, int y) {
-		ll sum = 0;
-		for (; x; x &= x - 1)
-			sum += ft[x-1].query(ind(x-1, y));
-		return sum;
-	}
-};
+#include"FenwickTree.h"
+struct FT2{vector<VI>ys;vector<FT>ft;
+FT2(int limx):ys(limx){}
+void fakeUpdate(int x,int y){
+for(;x<SZ(ys);x|=x+1)ys[x].push_back(y);}
+void init(){
+for(VI&v:ys)sort(ALL(v)),ft.emplace_back(SZ(v));
+}int ind(int x,int y){
+return(int)(lower_bound(ALL(ys[x]),y)-ys[x].begin());}
+void update(int x,int y,ll dif){
+for(;x<SZ(ys);x|=x+1)
+ft[x].update(ind(x,y),dif);}
+ll query(int x,int y){ll sum=0;
+for(;x;x&=x-1)
+sum+=ft[x-1].query(ind(x-1,y));return sum;
+}};

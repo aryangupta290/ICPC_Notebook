@@ -37,22 +37,20 @@
  * - t starts off as 30 to make the first gcd check come earlier, as an
  *   optimization for small numbers.
  */
+
 #pragma once
 
-#include "ModMulLL.h"
-#include "MillerRabin.h"
-ull pollard(ull n) {
-	auto f = [n](ull x) { return modmul(x, x, n) + 1; };
-	ull x = 0, y = 0, t = 30, prd = 2, i = 1, q;
-	while (t++ % 40 || __gcd(prd, n) == 1) {
-		if (x == y) x = ++i, y = f(x);
-		if ((q = modmul(prd, max(x,y) - min(x,y), n))) prd = q;
-		x = f(x), y = f(f(y));}
-	return __gcd(prd, n);}
-vector<ull> factor(ull n) {
-	if (n == 1) return {};
-	if (isPrime(n)) return {n};
-	ull x = pollard(n);
-	auto l = factor(x), r = factor(n / x);
-	l.insert(l.end(), ALL(r));
-	return l;}
+#include"ModMulLL.h"
+
+#include"MillerRabin.h"
+ull pollard(ull n){
+auto f=[n](ull x){return modmul(x,x,n)+1;};
+ull x=0,y=0,t=30,prd=2,i=1,q;
+while(t++%40||__gcd(prd,n)==1){
+if(x==y)x=++i,y=f(x);
+if((q=modmul(prd,max(x,y)-min(x,y),n)))prd=q;
+x=f(x),y=f(f(y));}return__gcd(prd,n);}
+vector<ull>factor(ull n){if(n==1)return{};
+if(isPrime(n))return{n};ull x=pollard(n);
+auto l=factor(x),r=factor(n/x);
+l.insert(l.end(),ALL(r));return l;}

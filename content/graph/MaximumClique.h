@@ -49,3 +49,4 @@ struct Maxclique {
 	VI maxClique() { init(V), expand(V); return qmax; }
 	Maxclique(vb conn) : e(conn), C(SZ(e)+1), S(SZ(C)), old(S) {
 		REP(i,0,SZ(e)) V.push_back({i});}};
+

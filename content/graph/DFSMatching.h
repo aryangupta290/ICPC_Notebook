@@ -12,22 +12,16 @@
  * Usage: VI btoa(m, -1); dfsMatching(g, btoa);
  * Status: works
  */
+
 #pragma once
 
-bool find(int j, vector<VI>& g, VI& btoa, VI& vis) {
-	if (btoa[j] == -1) return 1;
-	vis[j] = 1; int di = btoa[j];
-	for (int e : g[di])
-		if (!vis[e] && find(e, g, btoa, vis)) {
-			btoa[e] = di;
-			return 1;}
-	return 0;}
-int dfsMatching(vector<VI>& g, VI& btoa) {
-	VI vis;
-	REP(i,0,SZ(g)) {
-		vis.assign(SZ(btoa), 0);
-		for (int j : g[i])
-			if (find(j, g, btoa, vis)) {
-				btoa[j] = i;
-				break;}}
-	return SZ(btoa) - (int)count(ALL(btoa), -1);}
+bool find(int j,vector<VI>&g,VI&btoa,VI&vis){
+if(btoa[j]==-1)return 1;
+vis[j]=1;int di=btoa[j];for(int e:g[di])
+if(!vis[e]&&find(e,g,btoa,vis)){
+btoa[e]=di;return 1;}return 0;}
+int dfsMatching(vector<VI>&g,VI&btoa){
+VI vis;REP(i,0,SZ(g)){
+vis.assign(SZ(btoa),0);for(int j:g[i])
+if(find(j,g,btoa,vis)){btoa[j]=i;break;}}
+return SZ(btoa)-(int)count(ALL(btoa),-1);}

@@ -21,3 +21,4 @@ void solve(int i, int l, int r, int optl, int optr) {
   solve(i, l, mid - 1, optl, best.second);
   solve(i, mid + 1, r, best.second, optr);
 }
+

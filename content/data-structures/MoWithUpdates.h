@@ -20,3 +20,4 @@ void MoWithUpdates(vector<Query> qs, vector<Update> upd) {
     while (r < q.r) add(++r);
     while (r > q.r) remove(r--);
     ans[q.id] = get();}}
+
